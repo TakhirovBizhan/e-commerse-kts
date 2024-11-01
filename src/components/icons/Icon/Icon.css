@@ -1,0 +1,17 @@
+.icon {
+    display: inline-block;
+    flex-shrink: 0;
+    color: currentColor;
+}
+
+.icon_color_primary {
+    color: black;
+}
+
+.icon_color_secondary {
+    color: var(--color-blue-grey)
+}
+
+.icon_color_accent {
+    color: var(--color-accent);
+}
