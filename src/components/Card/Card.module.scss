@@ -1,19 +1,21 @@
+@import '../../styles/variables.scss';
+
 .card{ 
     width: 100%; 
     max-width: 360px; 
-    background-color: var(--color-white); 
+    background-color: $white; 
     transition: box-shadow 0.3s ease; 
     overflow: hidden; 
     cursor: pointer; 
     
     } 
     .card:hover{ 
-        box-shadow: var(--shadow);
+        box-shadow: $shadow;
         
     } 
     .card__header{ 
         position: relative; 
-        background-color: var(--color-light-grey); 
+        background-color: $lightGrey; 
         
     } 
 
@@ -33,25 +35,25 @@
     } 
     
     .card__body{ 
-     padding: var(--space-xl) var(--space-xs);
+     padding: $lightGrey $space_xs;
      
     } 
     .card__caption{ 
-        margin-bottom: var(--space-xxs); 
+        margin-bottom: $space_xxs; 
         
     } 
     .card__subtitle{ 
-        margin-top: var(--space-xxs); 
+        margin-top: $space_xxs; 
         
     } 
     .card__footer{ 
         display: flex; 
         align-items: center; 
-        margin-top: var(--space-l); 
+        margin-top: $space_l; 
         
     } 
     .card__action{ 
-        padding-left: var(--space-xxs); 
+        padding-left: $space_xxs; 
         margin-left: auto; 
         
     }

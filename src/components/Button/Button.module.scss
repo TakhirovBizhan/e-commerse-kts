@@ -1,37 +1,38 @@
-.button {
-    background-color: var(--color-brand);
-    display: inline-flex;
-    align-items: center;
-    padding: var(--space-s) var(--space-l) var(--space-s) var(--space-l);
-    border: none;
-    /* outline: none; */
-    color: white;
-    min-height: 52px;
+@import "../../styles/variables.scss";
 
+.button {
+  background-color: $brandColor;
+  display: inline-flex;
+  align-items: center;
+  padding: $space_s $space_l $space_s $space_l;
+  border: none;
+  /* outline: none; */
+  color: var($white);
+  min-height: 52px;
 }
 
 .button_loader {
-    fill: white;
+  fill: var($white);
 }
 
 .button:hover {
-    background-color: var(--brand-hover);
+  background-color: $brandHover;
 }
 
 .button:disabled {
-    pointer-events: none;
-    cursor: default;
+  pointer-events: none;
+  cursor: default;
 }
 .button_disabled {
-    background-color: var(--color-light-grey);
+  background-color: $lightGrey;
 }
 
 .button:active {
-    background-color: var(--color-accent-active);
+  background-color: $colorAccentActive;
 }
 
 .button .button_loader {
-    flex-shrink: 0;
-    margin-right: 8px;
-    color: currentColor;
+  flex-shrink: 0;
+  margin-right: 8px;
+  color: currentColor;
 }

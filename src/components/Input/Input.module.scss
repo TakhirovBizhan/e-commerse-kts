@@ -1,52 +1,56 @@
-.input { 
-    --text-color: var(--color-black); 
-    --bg-color: var(--color-white); 
-    --border-color: transparent; 
- 
-    display: flex; 
-    align-items: center; 
-    padding: var(--space-s) var(--space-xs); 
-    height: 52px; 
-    width: 100%; 
-    border: 1px solid var(--border-color); 
-    background: var(--bg-color); 
-    transition: border-color 0.3s ease, color 0.3 ease, background-coloe 0.3 ease; 
-} 
- 
-.input:focus-within { 
-    --border-color: var(--color-accent); 
-} 
- 
- 
-.input_disabled { 
-    --text-color: var(--color-black); 
-    pointer-events: none; 
-} 
- 
-.input__field { 
-    display: block; 
-    flex-grow: 1; 
-    height: 100%; 
-    padding: 0; 
-    border: none; 
-    color: var(--text-color); 
-    font-family: 'Roboto'; 
-    font-size: 16px; 
-    line-height: 20px; 
-    font-weight: 400; 
-    background: none; 
-    appearance: none; 
-    outline: none; 
-    transition: color 0.3s ease; 
-} 
- 
-.input__field::placeholder { 
-    color: var(--color-blue-grey); 
-    opacity: 1; 
-} 
- 
-.input__after { 
-    display: flex; 
-    flex-shrink: 0; 
-    margin-left: var(--space-xxs); 
+@import "../../styles/variables.scss";
+
+.input {
+  --text-color: $primaryColor;
+  --bg-color: var($white);
+  --border-color: transparent;
+
+  display: flex;
+  align-items: center;
+  padding: $space_s $space_xs;
+  height: 52px;
+  width: 100%;
+  border: 1px solid var(--border-color);
+  background: var(--bg-color);
+  transition:
+    border-color 0.3s ease,
+    color 0.3 ease,
+    background-coloe 0.3 ease;
+}
+
+.input:focus-within {
+  --border-color: $brandColor;
+}
+
+.input_disabled {
+  --text-color: $primaryColor;
+  pointer-events: none;
+}
+
+.input__field {
+  display: block;
+  flex-grow: 1;
+  height: 100%;
+  padding: 0;
+  border: none;
+  color: var(--text-color);
+  font-family: "Roboto";
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  background: none;
+  appearance: none;
+  outline: none;
+  transition: color 0.3s ease;
+}
+
+.input__field::placeholder {
+  color: $colorSecondary;
+  opacity: 1;
+}
+
+.input__after {
+  display: flex;
+  flex-shrink: 0;
+  margin-left: $space_xxs;
 }

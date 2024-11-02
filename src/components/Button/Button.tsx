@@ -1,4 +1,3 @@
-
 import styles from './Button.module.scss';
 import Loader from '../Loader';
 import Text from '../Text';
@@ -11,7 +10,6 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   children: React.ReactNode;
 };
 
-console.log(styles)
 
 const Button: React.FC<ButtonProps> = (
   {className,

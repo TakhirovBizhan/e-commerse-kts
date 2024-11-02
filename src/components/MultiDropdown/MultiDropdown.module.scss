@@ -1,33 +1,35 @@
-.multi_dropdown { 
-    position: relative; 
-    width: 100%; 
-} 
+@import "../../styles/variables.scss";
 
-.multi_dropdown__options { 
-    position: absolute; 
-    top: calc(100% + var(--space-xxs)); 
-    left: 0; 
-    width: 100%; 
-    background-color: var(--color-white); 
-    box-shadow: var(---shadow); 
-} 
+.multi_dropdown {
+  position: relative;
+  width: 100%;
+}
 
-.multi_dropdown__option { 
-    display: block; 
-    padding: var(--space-s) var(--space-xs); 
-    color: black; 
-    transition:  color 0.3s ease; 
-    cursor: pointer; 
-    appearance: none; 
-    border: none; 
-    outline: none; 
-    background: none; 
-} 
+.multi_dropdown__options {
+  position: absolute;
+  top: calc(100% + $space_xxs);
+  left: 0;
+  width: 100%;
+  background-color: var($white);
+  box-shadow: var(---shadow);
+}
 
-.multi_dropdown__option:hover { 
-    color: var(--color-blue-grey);   
-} 
+.multi_dropdown__option {
+  display: block;
+  padding: $space_s $space_xs;
+  color: $primaryColor;
+  transition: color 0.3s ease;
+  cursor: pointer;
+  appearance: none;
+  border: none;
+  outline: none;
+  background: none;
+}
 
-.multi_dropdown__option_selected { 
-    color: var(--color-accent); 
+.multi_dropdown__option:hover {
+  color: $colorSecondary;
+}
+
+.multi_dropdown__option_selected {
+  color: $brandColor;
 }
