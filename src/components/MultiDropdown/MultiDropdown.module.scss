@@ -1,9 +1,9 @@
-.multi-dropdown { 
+.multi_dropdown { 
     position: relative; 
     width: 100%; 
 } 
 
-.multi-dropdown__options { 
+.multi_dropdown__options { 
     position: absolute; 
     top: calc(100% + var(--space-xxs)); 
     left: 0; 
@@ -12,7 +12,7 @@
     box-shadow: var(---shadow); 
 } 
 
-.multi-dropdown__option { 
+.multi_dropdown__option { 
     display: block; 
     padding: var(--space-s) var(--space-xs); 
     color: black; 
@@ -24,10 +24,10 @@
     background: none; 
 } 
 
-.multi-dropdown__option:hover { 
+.multi_dropdown__option:hover { 
     color: var(--color-blue-grey);   
 } 
 
-.multi-dropdown__option_selected { 
+.multi_dropdown__option_selected { 
     color: var(--color-accent); 
 }

@@ -1,8 +1,7 @@
-import React from 'react'; 
+
 import cn from 'classnames'; 
 import '../../styles/variables.css';
-import '../../styles/styles.css'
-import './Card.css'; 
+import styles from './Card.module.scss'; 
 import Text from '../Text'; 
 export type CardProps = { 
   /** Дополнительный classname */ 
@@ -34,14 +33,14 @@ const Card: React.FC<CardProps> = ({
   onClick
 }) => { 
   return ( 
-    <div className={cn(className, 'card')} onClick={onClick}> 
-      <div className="card__header"> 
-        <img className="card__image" src={image} alt="card" /> 
+    <div className={cn(className, styles.card)} onClick={onClick}> 
+      <div className={styles.card__header}> 
+        <img className={styles.card__image} src={image} alt="card" /> 
       </div> 
-      <div className="card__body"> 
+      <div className={styles.card__body}> 
         {captionSlot && ( 
           <Text 
-            className="card__caption" 
+            className={styles.card__caption} 
             view="p-14" 
             weight="medium" 
             color="secondary" 
@@ -53,20 +52,20 @@ const Card: React.FC<CardProps> = ({
           {title} 
         </Text> 
         <Text 
-          className="card__subtitle" 
+          className={styles.card__subtitle}
           view="p-16" 
           color="secondary" 
           maxLines={3} 
         > 
           {subtitle} 
         </Text> 
-        <div className="card__footer"> 
+        <div className={styles.card__footer}> 
           {contentSlot && ( 
-            <Text className="card__content" view="p-18" weight="bold"> 
+            <Text className={styles.card__content} view="p-18" weight="bold"> 
               {contentSlot} 
             </Text> 
           )} 
-          <div className="card__action">{actionSlot}</div> 
+          <div className={styles.card__action}>{actionSlot}</div> 
         </div> 
       </div> 
     </div> 

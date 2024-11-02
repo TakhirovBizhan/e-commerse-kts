@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 import CheckIcon from '../icons/CheckIcon';
-import './CheckBox.css';
+import styles from './CheckBox.module.scss';
 
 export type CheckBoxProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
@@ -24,16 +24,16 @@ const CheckBox: React.FC<CheckBoxProps> = ({
     }
 
   return (
-    <label className={cn(className, 'checkbox', disabled && 'checkbox_disabled')}>
+    <label className={cn(className, styles.checkbox, disabled && styles.checkbox_disabled)}>
       <input
-      className='checkbox__controller'
+      className={styles.checkbox__controller}
         type="checkbox"
         onChange={handleChange}
         checked={checked}
         disabled={disabled}
         {...props}
       />
-      <CheckIcon className='checkbox__check' width={40} height={40} />
+      <CheckIcon className={styles.checkbox__check} width={40} height={40} />
     </label>
   );
 };

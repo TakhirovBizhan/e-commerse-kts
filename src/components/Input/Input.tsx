@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'; 
 import '../../styles/variables.css'; 
 import cn from 'classnames'; 
-import './Input.css'; 
+import styles from './Input.module.scss'; 
 export type InputProps = Omit< 
   React.InputHTMLAttributes<HTMLInputElement>, 
   'onChange' | 'value' 
@@ -24,9 +24,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     ); 
  
     return ( 
-      <label className={cn(className, 'input', disabled && 'input_disabled')}> 
+      <label className={cn(className, styles.input, disabled && styles.input_disabled)}> 
         <input 
-        className='input__field' 
+        className={styles.input__field}
           type='text' 
           value={value} 
           disabled={disabled} 
@@ -34,7 +34,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           ref={ref} 
           {...props} 
         /> 
-        {afterSlot && <div className='input__after'>{afterSlot}</div>} 
+        {afterSlot && <div className={styles.input__after}>{afterSlot}</div>} 
       </label> 
     ); 
   } 

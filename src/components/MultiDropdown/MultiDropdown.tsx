@@ -1,7 +1,7 @@
 import React from 'react'; 
 import '../../styles/variables.css'; 
 import cn from 'classnames'; 
-import './MultiDropdown.css'; 
+import styles from './MultiDropdown.module.scss'; 
 import Input from '../Input'; 
 import Text from '../Text'; 
 import ArrowDownIcon from '../icons/ArrowDownIcon'; 
@@ -94,9 +94,9 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
   ); 
   const opened = isOpened && !disabled; 
   return ( 
-    <div className={cn(className, 'multi-dropdown')} ref={wrapperRef}> 
+    <div className={cn(className, styles.multi_dropdown)} ref={wrapperRef}> 
       <Input 
-        className="multi-dropdown__field" 
+        className={styles.multi_dropdown__field} 
         onClick={open} 
         disabled={disabled} 
         placeholder={title} 
@@ -106,13 +106,13 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
         ref={ref} 
       /> 
       {opened && ( 
-        <div className="multi-dropdown__options"> 
+        <div className={styles.multi_dropdown__options}> 
           {filteredOptions.map((option) => ( 
             <button 
               className={cn( 
-                'multi-dropdown__option', 
+                styles.multi_dropdown__option, 
                 selectedKeysSet.has(option.key) && 
-                  'multi-dropdown__option_selected' 
+                  styles.multi_dropdown__option_selected
               )} 
               key={option.key} 
               onClick={() => {onSelect(option); 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './Text.css';
+import styles from  './Text.module.scss';
 import '../../styles/variables.css';
 import '../../styles/styles.css';
 import cn from 'classnames';
@@ -32,11 +32,11 @@ const Text: React.FC<TextProps> = (
     }) => {
         return (
             <Tag 
-            className={cn(`
-            text_view_${view}`,
-            weight && `text_weight_${weight}`,
-        color && `text_color_${color}`,
-        !!maxLines && 'text_clamp',
+            className={cn(
+            [styles[`text_view_${view}`]],
+            weight && [styles[`text_weight_${weight}`]],
+        color && [styles[`text_color_${color}`]],
+        !!maxLines && styles.text_clamp,
         className)}
 
         style={{'--lines-count': maxLines} as React.CSSProperties}
