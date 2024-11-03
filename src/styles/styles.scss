@@ -30,6 +30,11 @@ a {
   text-decoration: none;
 }
 
+ul,
+li {
+  list-style-type: none;
+}
+
 ::selection {
   color: rgb(211, 240, 168);
   background-color: rgb(31, 36, 40);
