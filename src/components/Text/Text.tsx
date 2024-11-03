@@ -1,7 +1,5 @@
 import * as React from 'react';
 import styles from  './Text.module.scss';
-import '../../styles/variables.css';
-import '../../styles/styles.css';
 import cn from 'classnames';
 
 export type TextProps = {

@@ -1,0 +1,33 @@
+@use "../../styles/variables" as *;
+
+.header {
+  background-color: $white;
+  border-bottom: 2px solid $whiteGrey;
+}
+
+.header__wrapper {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 90px;
+  max-width: 1240px;
+}
+
+.header__nav {
+  display: flex;
+  gap: $space_xl;
+
+  .header__nav__link:hover {
+    color: $brandColor;
+  }
+}
+
+.header__logo {
+  width: 130.05px;
+}
+
+.header__icons_block {
+  display: flex;
+  gap: 24px;
+}

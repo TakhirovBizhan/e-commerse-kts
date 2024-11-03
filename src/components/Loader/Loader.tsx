@@ -1,5 +1,4 @@
 import styles from './loader.module.scss';
-import '../../styles/variables.css';
 import cn from 'classnames';
 
 

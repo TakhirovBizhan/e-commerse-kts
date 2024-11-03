@@ -1,7 +1,8 @@
-@import './Roboto/fonts';
+@use "./Roboto/fonts" as *;
 
-html, body {
-  font-family: 'Roboto';
+html,
+body {
+  font-family: "Roboto";
   margin: 0;
   padding: 0;
 }
@@ -23,3 +24,11 @@ pre {
   margin: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
+::selection {
+  color: rgb(211, 240, 168);
+  background-color: rgb(31, 36, 40);
+}

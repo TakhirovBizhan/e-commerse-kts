@@ -1,6 +1,5 @@
 
 import cn from 'classnames'; 
-import '../../styles/variables.css';
 import styles from './Card.module.scss'; 
 import Text from '../Text'; 
 export type CardProps = { 
