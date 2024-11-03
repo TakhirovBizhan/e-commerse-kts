@@ -32,6 +32,8 @@
 }
 
 .card__body {
+  display: flex;
+  flex-direction: column;
   padding: $space_xs $space_xs;
 }
 .card__caption {

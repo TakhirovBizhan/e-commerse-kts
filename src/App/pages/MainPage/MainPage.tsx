@@ -1,78 +1,93 @@
-import Text from '../../../components/Text'
+import { useEffect, useState } from 'react';
+import Text from '../../../components/Text';
 import styles from './mainPage.module.scss';
-import '../../../styles/styles.scss'
-import MultiDropdown, {Option} from '../../../components/MultiDropdown';
+import '../../../styles/styles.scss';
+import MultiDropdown, { Option } from '../../../components/MultiDropdown';
 import Input from '../../../components/Input';
 import Button from '../../../components/Button';
-import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Loader from '../../../components/Loader';
 import Card from '../../../components/Card';
+import leftArrow from '../../../../public/leftArrow.svg'
+import rightArrow from '../../../../public/rightArrow.svg'
 
 
 export const MainPage = () => {
-
   interface ICategory {
-    id: number,
-    name: string,
-    image: string,
-    creationAt: Date,
-    updatedAt: Date
+    id: number;
+    name: string;
+    image: string;
+    creationAt: Date;
+    updatedAt: Date;
   }
 
   interface IData {
-    id: number,
-    title: string,
-    price: number,
-    description: string,
-    images: string[],
-    category: ICategory,
-    creationAt: string,
-    updatedAt: string
-
+    id: number;
+    title: string;
+    price: number;
+    description: string;
+    images: string[];
+    category: ICategory;
+    creationAt: string;
+    updatedAt: string;
   }
 
   const [inputValue, setInputValue] = useState<string>('');
   const [data, setData] = useState<IData[]>([]);
- // const [currentPage, setCurrentPage] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(true);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const itemsPerPage = 9;
 
   useEffect(() => {
     const fetch = async () => {
       try {
-      const result = await axios({
-        method: 'get',
-        url: 'https://api.escuelajs.co/api/v1/products'
-      });
-
-      setData(result.data.map((raw: IData)=> ({
-        id: raw.id,
-        title: raw.title, 
-        price: raw.price,
-        description: raw.description,
-        images: raw.images,
-        category: raw.category,
-        creationAt: raw.creationAt,
-        updatedAt: raw.updatedAt
-      })))
-    } catch(e) {
-    console.error(e);
-  } finally {
-    setLoading(false);
-  }
-}
+        const result = await axios.get('https://api.escuelajs.co/api/v1/products');
+        setData(result.data);
+      } catch (e) {
+        console.error(e);
+      } finally {
+        setLoading(false);
+      }
+    };
     fetch();
   }, []);
 
-  console.log(data)
-  
+  const totalPages = Math.ceil(data.length / itemsPerPage);
+
+  const currentData = data.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+
+  const handleNextPage = () => setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+  const handlePreviousPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
+
+  const handlePageClick = (page: number) => setCurrentPage(page);
+
+  const renderPageButtons = () => {
+    let buttons = [];
+
+    // Отображаем все страницы, если их <= 6
+    if (totalPages <= 6) {
+      buttons = Array.from({ length: totalPages }, (_, i) => i + 1);
+    } else {
+      if (currentPage <= 3) {
+        // Если текущая страница одна из первых трех
+        buttons = [1, 2, 3, '...', totalPages];
+      } else if (currentPage > 3 && currentPage < totalPages - 2) {
+        // Если текущая страница где-то в середине
+        buttons = [1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages];
+      } else {
+        // Если текущая страница одна из последних трех
+        buttons = [1, '...', totalPages - 2, totalPages - 1, totalPages];
+      }
+    }
+
+    return buttons;
+  };
+
   return (
-    <main>
+    <main className={styles.main}>
       <div className='wrapper'>
-        <div className={styles.mainPage__textBlock}>
-          <Text view={'title'}>
-            Products
-          </Text>
+        <div className={styles.main__textBlock}>
+          <Text view={'title'}>Products</Text>
           <Text view='p-20' color='secondary'>
             We display products based on the latest products 
             we have, if you want to see our old products please enter the name of the item
@@ -80,45 +95,73 @@ export const MainPage = () => {
         </div>
         <div className={styles.main__search_and_filter}>
           <div className={styles.main__search_block}>
-          <Input className={styles.main__search_block__input} placeholder='Search product' onChange={function (inputValue): void {setInputValue(inputValue) } } value={inputValue}></Input> 
-          <Button>Find now</Button>  
+            <Input
+              className={styles.main__search_block__input}
+              placeholder='Search product'
+              onChange={(value) => setInputValue(value)}
+              value={inputValue}
+            />
+            <Button>Find now</Button>  
           </div>
-          <MultiDropdown className={styles.multiDropdown}
-      options={[
-          { key: 'msk', value: 'Москва' },
-          { key: 'spb', value: 'Санкт-Петербург' },
-          { key: 'ekb', value: 'Екатеринбург' }
-      ]}
-      value={[]}
-      onChange={(value: Option[]) => value.map(function(el){ 
-        console.log(el.key, el.value)
-      })}
-      getTitle={() => ''}
-  />
+          <MultiDropdown
+            className={styles.multiDropdown}
+            options={[
+              { key: 'msk', value: 'Москва' },
+              { key: 'spb', value: 'Санкт-Петербург' },
+              { key: 'ekb', value: 'Екатеринбург' }
+            ]}
+            value={[]}
+            onChange={(value: Option[]) => value.map((el) => console.log(el.key, el.value))}
+            getTitle={() => ''}
+          />
         </div>
-        <div className={styles.main__card_list}>
 
+        <div className={styles.main__card_list}>
           {loading ? (
-          <Loader size='l' />) : (
-          <div className={styles.main__card_list__text_block}>  
-            <Text view='title' className={styles.main__card_list__title_text}>Total Product</Text>
-            <Text view='p-20' color='accent'>{data ? data.length : ''}</Text>
+            <Loader size='l' />
+          ) : (
+            <div className={styles.main__card_list__text_block}>
+              <Text view='title' className={styles.main__card_list__title_text}>Total Product</Text>
+              <Text view='p-20' color='accent'>{data.length}</Text>
             </div>
           )}
 
           <div className={styles.main__card_list__grid}>
-          {data.map(data => 
-          <Card
-          className={styles.main__card_list__grid__item}
-          key={data.id} 
-          image={data.images[0]} 
-          captionSlot={data.category.name}
-          title={data.title} 
-          subtitle={data.description}
-          contentSlot={`$${data.price}`}
-          actionSlot={<Button>Add to Cart</Button>}
-          >
-          </Card>)}
+            {currentData.map((product) => (
+              <Card
+                className={styles.main__card_list__grid__item}
+                key={product.id}
+                image={product.images[0]}
+                captionSlot={product.category.name}
+                title={product.title}
+                subtitle={product.description}
+                contentSlot={`$${product.price}`}
+                actionSlot={<Button><Text view='button'>Add to Cart</Text></Button>}
+              />
+            ))}
+          </div>
+          <div className={styles.pagination}>
+            <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+            <img src={leftArrow} alt="предыдущий товар" />
+            </button>
+            {renderPageButtons().map((page, index) =>
+            page === '...' ? (
+              <span key={index} className={styles.ellipsis}>
+                {page}
+              </span>
+            ) : (
+              <button
+                key={index}
+                className={currentPage === page ? styles.active : ''}
+                onClick={() => handlePageClick(page as number)}
+              >
+                {page}
+              </button>
+            )
+          )}
+            <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+              <img src={rightArrow} alt="Следующий товар" />
+            </button>
           </div>
         </div>
       </div>

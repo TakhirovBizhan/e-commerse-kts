@@ -1,56 +1,85 @@
 @use "../../../styles/variables.scss" as *;
 
-.mainPage__textBlock {
-  margin-top: 100px;
-  display: flex;
-  flex-direction: column;
-  gap: $space_xl;
-  align-items: center;
+.main {
+  margin-bottom: 100px;
 
-  p {
-    max-width: 653px;
-    text-align: center;
+  &__textBlock {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: $space_xl;
+    align-items: center;
+
+    p {
+      max-width: 653px;
+      text-align: center;
+    }
+  }
+
+  &__search_block {
+    margin-top: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__search_block__input {
+    max-width: 1079px;
+  }
+
+  .multiDropdown {
+    max-width: 300px;
+  }
+
+  &__search_and_filter {
+    display: flex;
+    flex-direction: column;
+    gap: $space_xl;
+  }
+
+  &__card_list {
+    margin-top: 48px;
+
+    &__title_text {
+      font-size: 32px;
+    }
+
+    &__text_block {
+      display: flex;
+      align-items: center;
+      gap: $space_xl;
+    }
+
+    &__grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+    }
   }
 }
 
-.main__search_block {
-  margin-top: 48px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.main__search_block__input {
-  max-width: 1079px;
-}
-
-.multiDropdown {
-  max-width: 300px;
-}
-
-.main__search_and_filter {
-  display: flex;
-  flex-direction: column;
-  gap: $space_xl;
-}
-
-.main__card_list {
-  margin-top: 48px;
-}
-
-.main__card_list__title_text {
-  font-size: 32px;
-}
-
-.main__card_list__text_block {
+.pagination {
   display: flex;
   align-items: center;
-  gap: $space_xl;
-}
+  justify-content: center;
+  margin-top: 40px;
 
-.main__card_list__grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 30px;
+  button {
+    background-color: transparent;
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+
+    &.active {
+      background-color: $brandColor;
+      color: #fff;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
 }
