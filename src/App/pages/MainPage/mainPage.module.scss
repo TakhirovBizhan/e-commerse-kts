@@ -1,0 +1,34 @@
+@use "../../../styles/variables.scss" as *;
+
+.mainPage__textBlock {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: $space_xl;
+  align-items: center;
+
+  p {
+    max-width: 653px;
+    text-align: center;
+  }
+}
+
+.main__search_block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main__search_block__input {
+  max-width: 1079px;
+}
+
+.multiDropdown {
+  max-width: 300px;
+}
+
+.main__search_and_filter {
+  display: flex;
+  flex-direction: column;
+  gap: $space_xl;
+}

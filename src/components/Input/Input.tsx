@@ -1,5 +1,4 @@
-import React, { useCallback } from 'react'; 
-import '../../styles/variables.css'; 
+import React, { useCallback } from 'react';  
 import cn from 'classnames'; 
 import styles from './Input.module.scss'; 
 export type InputProps = Omit< 

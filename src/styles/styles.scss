@@ -1,10 +1,12 @@
 @use "./Roboto/fonts.scss";
+@use "./variables.scss" as *;
 
 html,
 body {
   font-family: "Roboto";
   margin: 0;
   padding: 0;
+  background-color: $backgroundColor;
 }
 
 * {
@@ -31,4 +33,9 @@ a {
 ::selection {
   color: rgb(211, 240, 168);
   background-color: rgb(31, 36, 40);
+}
+
+.wrapper {
+  max-width: 1240px;
+  margin: auto;
 }
