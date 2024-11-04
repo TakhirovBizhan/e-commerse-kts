@@ -59,6 +59,22 @@
   }
 }
 
+.related {
+  &__block {
+    margin-top: $space_xxl;
+  }
+
+  &__text {
+    margin-bottom: 32px;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 100px;
+  }
+}
+
 .go_back {
   height: $space_xxl;
   margin-top: 58px;
