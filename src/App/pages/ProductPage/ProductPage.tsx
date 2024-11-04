@@ -18,10 +18,12 @@ export const ProductPage = () => {
     const [data, setData] = useState<IData>();
     const [related, setRelated] = useState<IData[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
+    const [currentImage, setCurrentImage] = useState(0);
     const navigate = useNavigate();
     useEffect(() => {
         const fetch = async () => {
             try {
+                setCurrentImage(0)
                 const response = await axios.get(`https://api.escuelajs.co/api/v1/products/${id}`);
                 const relatedData = await axios.get('https://api.escuelajs.co/api/v1/products');
                 setRelated(relatedData.data);
@@ -34,8 +36,6 @@ export const ProductPage = () => {
         };
         fetch();
     }, [id]);
-
-    const [currentImage, setCurrentImage] = useState(0);
 
     return (
         <>
