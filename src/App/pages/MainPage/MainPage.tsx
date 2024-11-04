@@ -11,28 +11,10 @@ import Card from '../../../components/Card';
 import leftArrow from '../../../../public/leftArrow.svg'
 import rightArrow from '../../../../public/rightArrow.svg'
 import { Link } from 'react-router-dom';
+import { IData } from '../../../config/DataInterfaces';
 
 
 export const MainPage = () => {
-
-  interface ICategory {
-    id: number;
-    name: string;
-    image: string;
-    creationAt: Date;
-    updatedAt: Date;
-  }
-
-   interface IData {
-    id: number;
-    title: string;
-    price: number;
-    description: string;
-    images: string[];
-    category: ICategory;
-    creationAt: string;
-    updatedAt: string;
-  }
 
   const [inputValue, setInputValue] = useState<string>('');
   const [data, setData] = useState<IData[]>([]);

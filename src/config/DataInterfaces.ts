@@ -1,12 +1,12 @@
-interface ICategory {
+type ICategory = {
   id: number;
   name: string;
   image: string;
   creationAt: Date;
   updatedAt: Date;
-}
+};
 
-export interface IData {
+export type IData = {
   id: number;
   title: string;
   price: number;
@@ -15,4 +15,4 @@ export interface IData {
   category: ICategory;
   creationAt: string;
   updatedAt: string;
-}
+};
