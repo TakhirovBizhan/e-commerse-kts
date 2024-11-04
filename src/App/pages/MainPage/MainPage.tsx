@@ -23,6 +23,8 @@ export const MainPage = () => {
   const itemsPerPage = 9;
 
   useEffect(() => {
+    if(!loading) return;
+    
     const fetch = async () => {
       try {
         const result = await axios.get('https://api.escuelajs.co/api/v1/products');
@@ -34,7 +36,7 @@ export const MainPage = () => {
       }
     };
     fetch();
-  }, []);
+  }, [loading]);
 
   const totalPages = Math.ceil(data.length / itemsPerPage);
 
