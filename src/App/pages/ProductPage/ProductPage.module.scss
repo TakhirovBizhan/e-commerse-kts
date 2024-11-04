@@ -1,0 +1,46 @@
+@use "../../../styles/variables.scss" as *;
+
+.product {
+  display: flex;
+  gap: 48px;
+
+  &__photo__item {
+    width: 600px;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+
+    &__title_description {
+      display: flex;
+      flex-direction: column;
+      gap: $space_xl;
+    }
+
+    &__purchase {
+      padding-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+
+      &__buttons {
+        display: flex;
+        gap: 48px;
+      }
+    }
+  }
+}
+
+.go_back {
+  height: 48px;
+  margin-top: 58px;
+  margin-bottom: 32px;
+  display: flex;
+  gap: $space_xs;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}

@@ -1,5 +1,4 @@
-
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Text from '../Text';
 import bagSvg from '../../../public/bag.svg';
 import userSvg from '../../../public/user.svg';
@@ -13,9 +12,9 @@ export const Header = () => {
 
       <img className={styles.header__logo} src={logoSvg} alt="Логотип" />
       <nav className={styles.header__nav}>
-  <Link to="/"><Text view={'p-18'} color='primary' className={styles.header__nav__link}>Products</Text></Link>
-  <Link to="/Categories"><Text view={'p-18'} color='primary' className={styles.header__nav__link}>Categories</Text></Link>
-  <Link to="/About_us"><Text view={'p-18'} color='primary' className={styles.header__nav__link}>About us</Text></Link>
+        <NavLink to="/main"><Text view={'p-18'} color='primary' className={styles.header__nav__link}>Products</Text></NavLink>
+        <NavLink to="/Categories"><Text view={'p-18'} color='primary' className={styles.header__nav__link}>Categories</Text></NavLink>
+        <NavLink to="/About_us"><Text view={'p-18'} color='primary' className={styles.header__nav__link}>About us</Text></NavLink>
       </nav>
       <div className={styles.header__icons_block}>
         <img src={bagSvg} alt="корзина" />

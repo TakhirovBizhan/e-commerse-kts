@@ -10,9 +10,11 @@ import Loader from '../../../components/Loader';
 import Card from '../../../components/Card';
 import leftArrow from '../../../../public/leftArrow.svg'
 import rightArrow from '../../../../public/rightArrow.svg'
+import { Link } from 'react-router-dom';
 
 
 export const MainPage = () => {
+
   interface ICategory {
     id: number;
     name: string;
@@ -21,7 +23,7 @@ export const MainPage = () => {
     updatedAt: Date;
   }
 
-  interface IData {
+   interface IData {
     id: number;
     title: string;
     price: number;
@@ -63,19 +65,14 @@ export const MainPage = () => {
 
   const renderPageButtons = () => {
     let buttons = [];
-
-    // Отображаем все страницы, если их <= 6
     if (totalPages <= 6) {
       buttons = Array.from({ length: totalPages }, (_, i) => i + 1);
     } else {
       if (currentPage <= 3) {
-        // Если текущая страница одна из первых трех
         buttons = [1, 2, 3, '...', totalPages];
       } else if (currentPage > 3 && currentPage < totalPages - 2) {
-        // Если текущая страница где-то в середине
         buttons = [1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages];
       } else {
-        // Если текущая страница одна из последних трех
         buttons = [1, '...', totalPages - 2, totalPages - 1, totalPages];
       }
     }
@@ -128,9 +125,9 @@ export const MainPage = () => {
 
           <div className={styles.main__card_list__grid}>
             {currentData.map((product) => (
+              <Link key={product.id} to={`/main/product/${product.id}`}>
               <Card
                 className={styles.main__card_list__grid__item}
-                key={product.id}
                 image={product.images[0]}
                 captionSlot={product.category.name}
                 title={product.title}
@@ -138,11 +135,12 @@ export const MainPage = () => {
                 contentSlot={`$${product.price}`}
                 actionSlot={<Button><Text view='button'>Add to Cart</Text></Button>}
               />
+              </Link>
             ))}
           </div>
           <div className={styles.pagination}>
             <button onClick={handlePreviousPage} disabled={currentPage === 1}>
-            <img src={leftArrow} alt="предыдущий товар" />
+            <img src={leftArrow} alt="previous page" />
             </button>
             {renderPageButtons().map((page, index) =>
             page === '...' ? (
@@ -160,7 +158,7 @@ export const MainPage = () => {
             )
           )}
             <button onClick={handleNextPage} disabled={currentPage === totalPages}>
-              <img src={rightArrow} alt="Следующий товар" />
+              <img src={rightArrow} alt="next page" />
             </button>
           </div>
         </div>

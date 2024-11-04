@@ -44,3 +44,7 @@ li {
   max-width: 1240px;
   margin: auto;
 }
+
+.active p {
+  color: $brandColor;
+}

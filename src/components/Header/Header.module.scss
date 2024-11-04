@@ -18,7 +18,7 @@
   display: flex;
   gap: $space_xl;
 
-  .header__nav__link:hover {
+  &__link:hover {
     color: $brandColor;
   }
 }
