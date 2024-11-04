@@ -17,7 +17,7 @@
   }
 
   &__search_block {
-    margin-top: 48px;
+    margin-top: $space_xxl;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -38,7 +38,7 @@
   }
 
   &__card_list {
-    margin-top: 48px;
+    margin-top: $space_xxl;
 
     &__title_text {
       font-size: 32px;
