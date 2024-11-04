@@ -10,7 +10,7 @@ import Loader from '../../../components/Loader';
 import Card from '../../../components/Card';
 import leftArrow from '../../../../public/leftArrow.svg'
 import rightArrow from '../../../../public/rightArrow.svg'
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 
 export const MainPage = () => {
@@ -39,8 +39,11 @@ export const MainPage = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const itemsPerPage = 9;
+  const location = useLocation();
+  const locationPage = location.pathname.slice(-1);
 
   useEffect(() => {
+    setCurrentPage(Number(locationPage));
     const fetch = async () => {
       try {
         const result = await axios.get('https://api.escuelajs.co/api/v1/products');
@@ -148,13 +151,14 @@ export const MainPage = () => {
                 {page}
               </span>
             ) : (
+              <Link key={index} to={`/main/page/${page}`}>
               <button
-                key={index}
                 className={currentPage === page ? styles.active : ''}
                 onClick={() => handlePageClick(page as number)}
               >
                 {page}
               </button>
+              </Link>
             )
           )}
             <button onClick={handleNextPage} disabled={currentPage === totalPages}>
