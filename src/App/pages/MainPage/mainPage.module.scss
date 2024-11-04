@@ -83,3 +83,7 @@
     }
   }
 }
+
+.loader {
+  @include loader;
+}

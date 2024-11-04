@@ -37,7 +37,7 @@ export const ProductPage = () => {
     return (
         <>
             {loading ? (
-                <Loader size='l' />
+                <Loader className={styles.loader} size='l' />
             ) : (
                 <div className="wrapper">
                     <button className={styles.go_back} onClick={() => { navigate(-1) }}>

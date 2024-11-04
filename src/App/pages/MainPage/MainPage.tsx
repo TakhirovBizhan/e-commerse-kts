@@ -118,7 +118,7 @@ export const MainPage = () => {
 
         <div className={styles.main__card_list}>
           {loading ? (
-            <Loader size='l' />
+            <Loader className={styles.loader} size='l' />
           ) : (
             <div className={styles.main__card_list__text_block}>
               <Text view='title' className={styles.main__card_list__title_text}>Total Product</Text>
