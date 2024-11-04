@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import Text from '../Text';
 import bagSvg from '../../../public/bag.svg';
 import userSvg from '../../../public/user.svg';
@@ -10,7 +10,7 @@ export const Header = () => {
     <header className={styles.header}>
       <div className={styles.header__wrapper}>
 
-      <img className={styles.header__logo} src={logoSvg} alt="Логотип" />
+      <Link to='/main'><img className={styles.header__logo} src={logoSvg} alt="Логотип" /></Link>
       <nav className={styles.header__nav}>
         <NavLink to="/main"><Text view={'p-18'} color='primary' className={styles.header__nav__link}>Products</Text></NavLink>
         <NavLink to="/Categories"><Text view={'p-18'} color='primary' className={styles.header__nav__link}>Categories</Text></NavLink>

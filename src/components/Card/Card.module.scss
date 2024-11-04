@@ -10,7 +10,7 @@
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 .card:hover {
   box-shadow: $shadow;
@@ -50,6 +50,7 @@
   display: flex;
   align-items: center;
   margin-top: $space_l;
+  margin-bottom: 24px;
 }
 .card__action {
   padding-left: $space_xxs;
