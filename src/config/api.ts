@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { IData } from './DataInterfaces';
 
-const useFetchData = () => {
+export const useFetchData = () => {
   const [data, setData] = useState<IData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -23,5 +23,3 @@ const useFetchData = () => {
 
   return { data, loading };
 };
-
-export default useFetchData;

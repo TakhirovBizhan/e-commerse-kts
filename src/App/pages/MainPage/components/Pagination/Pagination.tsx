@@ -2,7 +2,7 @@ import { useState } from 'react';
 import leftArrow from '../../../../../../public/leftArrow.svg'
 import rightArrow from '../../../../../../public/rightArrow.svg'
 import { Link } from 'react-router-dom';
-import useFetchData from '../../../../../config/api'
+import {useFetchData} from '../../../../../config/api'
 import Loader from '../../../../../components/Loader';
 import Button from '../../../../../components/Button';
 import Card from '../../../../../components/Card';
