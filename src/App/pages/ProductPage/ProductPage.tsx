@@ -7,7 +7,9 @@ import Text from "../../../components/Text";
 import styles from './ProductPage.module.scss';
 import '../../../styles/variables.scss';
 import Button from "../../../components/Button";
-import leftArrow from '../../../../public/leftArrow.svg'
+import leftArrow from '../../../../public/leftArrow.svg';
+import leftArrowCircle from '../../../../public/leftArrowCircle.svg';
+import rightArrowCircle from '../../../../public/rightArrowCircle.svg';
 
 export const ProductPage = () => {
 
@@ -29,19 +31,30 @@ export const ProductPage = () => {
         fetch();
     }, [id]);
 
+    const [currentImage, setCurrentImage] = useState(0);
+    console.log(data)
+
     return (
         <>
             {loading ? (
                 <Loader size='l' />
             ) : (
                 <div className="wrapper">
-                    <button className={styles.go_back} onClick={() => {navigate(-1)}}>
-                    <img src={leftArrow} alt="previous page" />
-                    <Text view="p-20">Назад</Text>
+                    <button className={styles.go_back} onClick={() => { navigate(-1) }}>
+                        <img src={leftArrow} alt="previous page" />
+                        <Text view="p-20">Назад</Text>
                     </button>
                     <div className={styles.product}>
                         <div className={styles.product__photo}>
-                            <img className={styles.product__photo__item} src={data?.images[0]} alt="card photo" />
+
+                            <button onClick={() => setCurrentImage(currentImage === data?.images.length ? currentImage : currentImage-1)} className={`${styles.product__photo__icon_left} ${currentImage === 0 ? styles.blocked  : ''}`}>
+                            <img src={leftArrowCircle} alt="" />
+                            </button>
+                            <img className={styles.product__photo__item} src={data?.images[currentImage]} alt="card photo" />
+                            <button onClick={() => setCurrentImage(currentImage+1 === data?.images.length ? currentImage : currentImage+1)} className={`${styles.product__photo__icon_right} ${currentImage+1 === data?.images.length ? styles.blocked : ''}`}>
+                                <img  src={rightArrowCircle} alt="" />
+                            </button>
+
                         </div>
                         <div className={styles.product__text}>
                             <div className={styles.product__text__title_description}>
