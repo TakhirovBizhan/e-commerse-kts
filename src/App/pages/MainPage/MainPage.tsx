@@ -142,9 +142,9 @@ export const MainPage = () => {
             ))}
           </div>
           <div className={styles.pagination}>
-            <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+          <Link to={`/main/page/${currentPage - 1}`}><button onClick={handlePreviousPage} disabled={currentPage === 1}>
             <img src={leftArrow} alt="previous page" />
-            </button>
+            </button></Link>
             {renderPageButtons().map((page, index) =>
             page === '...' ? (
               <span key={index} className={styles.ellipsis}>
@@ -161,9 +161,9 @@ export const MainPage = () => {
               </Link>
             )
           )}
-            <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+            <Link to={`/main/page/${currentPage + 1}`}><button onClick={handleNextPage} disabled={currentPage === totalPages}>
               <img src={rightArrow} alt="next page" />
-            </button>
+            </button></Link>
           </div>
         </div>
       </div>
