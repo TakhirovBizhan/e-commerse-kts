@@ -10,7 +10,7 @@ import Loader from '../../../components/Loader';
 import Card from '../../../components/Card';
 import leftArrow from '../../../../public/leftArrow.svg'
 import rightArrow from '../../../../public/rightArrow.svg'
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 export const MainPage = () => {
@@ -39,11 +39,8 @@ export const MainPage = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const itemsPerPage = 9;
-  const location = useLocation();
-  const locationPage = location.pathname.slice(-1);
 
   useEffect(() => {
-    setCurrentPage(Number(locationPage));
     const fetch = async () => {
       try {
         const result = await axios.get('https://api.escuelajs.co/api/v1/products');
@@ -118,7 +115,7 @@ export const MainPage = () => {
 
         <div className={styles.main__card_list}>
           {loading ? (
-            <Loader className={styles.loader} size='l' />
+            <Loader size='l' />
           ) : (
             <div className={styles.main__card_list__text_block}>
               <Text view='title' className={styles.main__card_list__title_text}>Total Product</Text>
@@ -142,28 +139,27 @@ export const MainPage = () => {
             ))}
           </div>
           <div className={styles.pagination}>
-          <Link to={`/main/page/${currentPage - 1}`}><button onClick={handlePreviousPage} disabled={currentPage === 1}>
+            <button onClick={handlePreviousPage} disabled={currentPage === 1}>
             <img src={leftArrow} alt="previous page" />
-            </button></Link>
+            </button>
             {renderPageButtons().map((page, index) =>
             page === '...' ? (
               <span key={index} className={styles.ellipsis}>
                 {page}
               </span>
             ) : (
-              <Link key={index} to={`/main/page/${page}`}>
               <button
+                key={index}
                 className={currentPage === page ? styles.active : ''}
                 onClick={() => handlePageClick(page as number)}
               >
                 {page}
               </button>
-              </Link>
             )
           )}
-            <Link to={`/main/page/${currentPage + 1}`}><button onClick={handleNextPage} disabled={currentPage === totalPages}>
+            <button onClick={handleNextPage} disabled={currentPage === totalPages}>
               <img src={rightArrow} alt="next page" />
-            </button></Link>
+            </button>
           </div>
         </div>
       </div>

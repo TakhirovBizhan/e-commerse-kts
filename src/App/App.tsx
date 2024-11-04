@@ -10,12 +10,11 @@ function App() {
     <BrowserRouter>
     <Header />
           <Routes>
-        <Route path="/main" element={<Navigate to="/main/page/1" replace />} />
+        <Route path="/main" element={<MainPage />} />
         <Route path="/main/product/:id" element={<ProductPage />} />
-        <Route path="/main/page/:number" element={<MainPage />} />
         <Route path="/Categories" element={<Categories />} />
         <Route path="/About_us" element={<About_us />} />
-        <Route path="*" element={<Navigate to="/main/page/1" replace />} />   
+        <Route path="*" element={<Navigate to="/main" replace />} />   
       </Routes>   
     </BrowserRouter>
   )
