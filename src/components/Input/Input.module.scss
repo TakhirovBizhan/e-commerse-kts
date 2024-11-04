@@ -14,42 +14,42 @@
   background: var(--bg-color);
   transition:
     border-color 0.3s ease,
-    color 0.3 ease,
-    background-color 0.3 ease;
+    color 0.3s ease,
+    background-color 0.3s ease;
+
+  &_disabled {
+    --text-color: #{$primaryColor};
+    pointer-events: none;
+    color: rgba(0, 0, 0, 0.5); // Пример для неактивного состояния
+  }
+
+  &__field {
+    display: block;
+    flex-grow: 1;
+    height: 100%;
+    padding: 0;
+    border: none;
+    color: var(--text-color);
+    font-family: "Roboto";
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+    background: none;
+    appearance: none;
+    outline: none;
+    transition: color 0.3s ease;
+  }
+  &__field::placeholder {
+    color: $colorSecondary;
+    opacity: 1;
+  }
 }
 
 .input:focus-within {
-  --border-color: $brandColor;
+  --border-color: #{$brandColor};
 }
 
-.input_disabled {
-  --text-color: $primaryColor;
-  pointer-events: none;
-}
-
-.input__field {
-  display: block;
-  flex-grow: 1;
-  height: 100%;
-  padding: 0;
-  border: none;
-  color: var(--text-color);
-  font-family: "Roboto";
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 400;
-  background: none;
-  appearance: none;
-  outline: none;
-  transition: color 0.3s ease;
-}
-
-.input__field::placeholder {
-  color: $colorSecondary;
-  opacity: 1;
-}
-
-.input__after {
+.input .input__after {
   display: flex;
   flex-shrink: 0;
   margin-left: $space_xxs;

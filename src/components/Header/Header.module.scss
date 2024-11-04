@@ -3,31 +3,61 @@
 .header {
   background-color: $white;
   border-bottom: 2px solid $whiteGrey;
-}
 
-.header__wrapper {
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 90px;
-  max-width: 1240px;
-}
+  &__wrapper {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 90px;
+    max-width: 1240px;
+  }
 
-.header__nav {
-  display: flex;
-  gap: $space_xl;
+  &__nav {
+    display: flex;
+    gap: $space_xl;
 
-  &__link:hover {
-    color: $brandColor;
+    &__link {
+      position: relative;
+      color: $primaryColor;
+      font-weight: normal;
+      text-decoration: none;
+      transition: color 0.3s;
+
+      &:hover {
+        color: $brandColor;
+      }
+
+      &__active {
+        color: $brandColor;
+        font-weight: bold;
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: -34px;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background-color: $brandColor;
+          border-radius: 1px;
+        }
+      }
+    }
+  }
+
+  &__logo {
+    width: 130.05px;
+  }
+
+  &__icons_block {
+    display: flex;
+    gap: 24px;
   }
 }
 
-.header__logo {
-  width: 130.05px;
-}
-
-.header__icons_block {
-  display: flex;
-  gap: 24px;
+.underscore_main {
+  background-color: $brandColor;
+  width: 80px;
+  height: 1px;
 }
