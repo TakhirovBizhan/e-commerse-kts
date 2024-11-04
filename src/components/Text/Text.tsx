@@ -1,12 +1,13 @@
-import * as React from 'react';
+
 import styles from  './Text.module.scss';
 import cn from 'classnames';
+import { memo } from 'react';
 
 export type TextProps = {
     /** Дополнительный класс */
     className?: string;
     /** Стиль отображения */
-    view?: 'title' | 'button' | 'p-20' | 'p-18' | 'p-16' | 'p-14';
+    view?: 'title' | 'min-title' | 'button' | 'p-20' | 'p-18' | 'p-16' | 'p-14';
     /** Html-тег */
     tag?:  'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'div' | 'p' | 'span';
     /** Начертание шрифта */
@@ -41,4 +42,4 @@ const Text: React.FC<TextProps> = (
             >{children}</Tag>
         )
     }
-export default Text;
+export default memo(Text);

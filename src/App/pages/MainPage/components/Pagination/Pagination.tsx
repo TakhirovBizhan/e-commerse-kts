@@ -39,17 +39,17 @@ export const Pagination = () => {
     };
   
   return (
-    <div className={s.card_list}>
+    <div className={s.root}>
     {loading ? (
       <Loader size='l' />
     ) : (
-      <div className={s.card_list__text_block}>
-        <Text view='title' className={s.card_list__title_text}>Total Product</Text>
+      <div className={s.root__text_block}>
+        <Text view='min-title' weight='bold'>Total Product</Text>
         <Text view='p-20' color='accent'>{data.length}</Text>
       </div>
     )}
 
-    <div className={s.card_list__grid}>
+    <div className={s.root__grid}>
       {currentData.map((product) => (
         <Link key={product.id} to={`/main/product/${product.id}`}>
         <Card

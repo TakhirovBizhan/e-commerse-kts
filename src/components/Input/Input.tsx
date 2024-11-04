@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';  
+import React, { memo, useCallback } from 'react';  
 import cn from 'classnames'; 
 import styles from './Input.module.scss'; 
 export type InputProps = Omit< 
@@ -38,4 +38,4 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     ); 
   } 
 ); 
-export default Input;
+export default memo(Input);

@@ -2,6 +2,7 @@
 import cn from 'classnames'; 
 import styles from './Card.module.scss'; 
 import Text from '../Text'; 
+import { memo } from 'react';
 export type CardProps = { 
   /** Дополнительный classname */ 
   className?: string; 
@@ -71,4 +72,4 @@ const Card: React.FC<CardProps> = ({
   ); 
 }; 
  
-export default Card;
+export default memo(Card);

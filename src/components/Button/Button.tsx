@@ -2,6 +2,7 @@ import styles from './Button.module.scss';
 import Loader from '../Loader';
 import Text from '../Text';
 import cn from 'classnames';
+import { memo } from 'react';
 
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   /** Состояние загрузки */
@@ -33,4 +34,4 @@ const Button: React.FC<ButtonProps> = (
   )
 }
 
-export default Button;
+export default memo(Button);

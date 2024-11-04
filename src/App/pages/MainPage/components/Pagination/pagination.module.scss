@@ -1,11 +1,7 @@
 @use "../../../../../styles/variables.scss" as *;
 
-.card_list {
+.root {
   margin-top: $space_xxxl;
-
-  &__title_text {
-    font-size: 32px;
-  }
 
   &__text_block {
     display: flex;
@@ -44,4 +40,7 @@
       cursor: not-allowed;
     }
   }
+}
+.loader {
+  @include loader;
 }

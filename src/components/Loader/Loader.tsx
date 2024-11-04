@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import styles from './loader.module.scss';
 import cn from 'classnames';
 
@@ -35,4 +36,4 @@ const Loader: React.FC<LoaderProps> = ({ size = 'l', className }) => {
     )
 };
 
-export default Loader;
+export default memo(Loader);

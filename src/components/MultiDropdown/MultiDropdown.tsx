@@ -1,4 +1,4 @@
-import React from 'react'; 
+import React, { memo } from 'react'; 
 import cn from 'classnames'; 
 import styles from './MultiDropdown.module.scss'; 
 import Input from '../Input'; 
@@ -126,4 +126,4 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
   ); 
 }; 
  
-export default MultiDropdown;
+export default memo(MultiDropdown);
