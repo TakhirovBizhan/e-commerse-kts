@@ -2,7 +2,7 @@ import { useState } from 'react';
 import leftArrow from '../../../../../../public/leftArrow.svg'
 import rightArrow from '../../../../../../public/rightArrow.svg'
 import { Link } from 'react-router-dom';
-import {useFetchData} from '../../../../../config/api'
+import {useProducts} from '../../../../../config/api'
 import Loader from '../../../../../components/Loader';
 import Button from '../../../../../components/Button';
 import Card from '../../../../../components/Card';
@@ -11,7 +11,7 @@ import s from './pagination.module.scss'
 
 export const Pagination = () => {
 
-    const {data, loading} = useFetchData();
+    const {data, loading} = useProducts();
     const [currentPage, setCurrentPage] = useState<number>(1);
     const itemsPerPage = 9;
     const totalPages = Math.ceil(data.length / itemsPerPage);
@@ -54,7 +54,7 @@ export const Pagination = () => {
         <Link key={product.id} to={`/main/product/${product.id}`}>
         <Card
           className={s.card_list__grid__item}
-          image={product.images[0]}
+          image={product.images[0].replace(/[[\]"'\\]/g, '')}
           captionSlot={product.category.name}
           title={product.title}
           subtitle={product.description}
