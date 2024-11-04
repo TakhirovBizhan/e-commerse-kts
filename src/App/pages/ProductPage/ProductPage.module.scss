@@ -2,7 +2,7 @@
 
 .product {
   display: flex;
-  gap: $space_xxl;
+  gap: $space_xxxl;
 
   &__photo {
     position: relative;
@@ -37,7 +37,7 @@
   &__text {
     display: flex;
     flex-direction: column;
-    gap: $space_xxl;
+    gap: $space_xxxl;
 
     &__title_description {
       display: flex;
@@ -46,14 +46,14 @@
     }
 
     &__purchase {
-      padding-top: 32px;
+      padding-top: $space_xxl;
       display: flex;
       flex-direction: column;
-      gap: $space_xxl;
+      gap: $space_xxxl;
 
       &__buttons {
         display: flex;
-        gap: $space_xxl;
+        gap: $space_xxxl;
       }
     }
   }
@@ -61,11 +61,11 @@
 
 .related {
   &__block {
-    margin-top: $space_xxl;
+    margin-top: $space_xxxl;
   }
 
   &__text {
-    margin-bottom: 32px;
+    margin-bottom: $space_xxl;
   }
 
   &__list {
@@ -76,9 +76,9 @@
 }
 
 .go_back {
-  height: $space_xxl;
+  height: $space_xxxl;
   margin-top: 58px;
-  margin-bottom: 32px;
+  margin-bottom: $space_xxl;
   display: flex;
   gap: $space_xs;
   align-items: center;
