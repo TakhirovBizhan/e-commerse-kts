@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import cn from 'classnames';
 import s from './ProductCarousel.module.scss';
 import rightArrowCircle from '../../../../../public/rightArrowCircle.svg';
@@ -49,4 +49,4 @@ const ProductCarousel: React.FC<ProductImageCarouselProps> = ({ images }) => {
   );
 };
 
-export default ProductCarousel;
+export default memo(ProductCarousel);
