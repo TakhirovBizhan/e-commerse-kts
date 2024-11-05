@@ -17,10 +17,10 @@
     color 0.3s ease,
     background-color 0.3s ease;
 
-  &_disabled {
+  &--disabled {
     --text-color: #{$primaryColor};
     pointer-events: none;
-    color: rgba(0, 0, 0, 0.5); // Пример для неактивного состояния
+    color: rgba(0, 0, 0, 0.5);
   }
 
   &__field {
@@ -38,10 +38,11 @@
     appearance: none;
     outline: none;
     transition: color 0.3s ease;
-  }
-  &__field::placeholder {
-    color: $colorSecondary;
-    opacity: 1;
+
+    &::placeholder {
+      color: $colorSecondary;
+      opacity: 1;
+    }
   }
 }
 
@@ -49,7 +50,7 @@
   --border-color: #{$brandColor};
 }
 
-.input .input__after {
+.input__after {
   display: flex;
   flex-shrink: 0;
   margin-left: $space_xxs;

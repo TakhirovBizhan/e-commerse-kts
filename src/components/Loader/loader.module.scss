@@ -12,25 +12,27 @@
 .loader {
   fill: $brandColor;
   animation: spin 1s infinite linear;
-}
 
-.loader-size-l {
-  width: 60px;
-  height: 60px;
-}
+  &_block {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
 
-.loader-size-m {
-  width: 48px;
-  height: 48px;
-}
+  &-size {
+    &-l {
+      width: 60px;
+      height: 60px;
+    }
 
-.loader-size-s {
-  width: 24px;
-  height: 24px;
-}
+    &-m {
+      width: 48px;
+      height: 48px;
+    }
 
-.loading_block {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
+    &-s {
+      width: 24px;
+      height: 24px;
+    }
+  }
 }

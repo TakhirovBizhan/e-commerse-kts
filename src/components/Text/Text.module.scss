@@ -1,70 +1,70 @@
 @use "../../styles/variables" as *;
+.text {
+  &_view {
+    &_button {
+      font-size: 18px;
+      line-height: 18px;
+    }
 
-.text_view_button {
-  font-size: 18px;
-  line-height: 18px;
-}
+    &_title {
+      font-size: 44px;
+      line-height: 48px;
+      font-weight: 700;
+    }
+    &_min-title {
+      font-size: 32px;
+      line-height: 48px;
+      font-weight: 700;
+    }
+    &_p-20 {
+      font-size: 20px;
+      line-height: 24px;
+    }
 
-.text_view_title {
-  font-size: 44px;
-  line-height: 48px;
-  font-weight: 700;
-}
+    &_p-18 {
+      font-size: 18px;
+      line-height: 22px;
+    }
+    &_p-16 {
+      font-size: 16px;
+      line-height: 20px;
+    }
 
-.text_view_min-title {
-  font-size: 32px;
-  line-height: 48px;
-  font-weight: 700;
-}
+    &_p-14 {
+      font-size: 14px;
+      line-height: 18px;
+    }
+  }
 
-.text_view_p-20 {
-  font-size: 20px;
-  line-height: 24px;
-}
+  &_weight {
+    &_normal {
+      font-weight: 400;
+    }
+    &_medium {
+      font-weight: 500;
+    }
+    &_bold {
+      font-weight: 700;
+    }
+  }
 
-.text_view_p-18 {
-  font-size: 18px;
-  line-height: 22px;
-}
+  &_color {
+    &_primary {
+      color: $primaryColor;
+    }
+    &_secondary {
+      color: $colorSecondary;
+    }
+    &_accent {
+      color: $brandColor;
+    }
+  }
 
-.text_view_p-16 {
-  font-size: 16px;
-  line-height: 20px;
-}
-
-.text_view_p-14 {
-  font-size: 14px;
-  line-height: 18px;
-}
-
-.text_weight_normal {
-  font-weight: 400;
-}
-
-.text_weight_medium {
-  font-weight: 500;
-}
-
-.text_weight_bold {
-  font-weight: 700;
-}
-
-.text_color_primary {
-  color: $primaryColor;
-}
-
-.text_color_secondary {
-  color: $colorSecondary;
-}
-
-.text_color_accent {
-  color: $brandColor;
-}
-
-.text_clamp {
-  display: -webkit-box;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: var(--lines-count);
+  &_clamp {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--lines-count);
+  }
 }

@@ -1,8 +1,8 @@
 @use "../../styles/variables" as *;
 
 .checkbox {
-  --bg-color: $white;
-  --check-color: $brandColor;
+  --bg-color: #{$white};
+  --check-color: #{$brandColor};
   --border-color: transparent;
 
   position: relative;
@@ -15,38 +15,37 @@
   transition:
     border-color 0.3s ease,
     background-color 0.3s ease;
-}
 
-.checkbox:hover {
-  --border-color: $brandColor;
-}
+  &:hover {
+    --border-color: #{$brandColor};
+  }
 
-.checkbox_disabled {
-  --bg-color: rgba(255, 255, 255, 0.5);
-  --check-color: rgba(0, 0, 0, 0.2);
+  &--disabled {
+    --bg-color: rgba(255, 255, 255, 0.5);
+    --check-color: rgba(0, 0, 0, 0.2);
+    pointer-events: none;
+  }
 
-  pointer-events: none;
-}
+  &__controller {
+    width: 0;
+    height: 0;
+    opacity: 0;
 
-.checkbox__controller {
-  width: 0;
-  height: 0;
-  opacity: 0;
-}
+    &:checked + .checkbox__check {
+      opacity: 1;
+    }
+  }
 
-.checkbox__controller:checked + .checkbox__check {
-  opacity: 1;
-}
-
-.checkbox .checkbox__check {
-  position: absolute;
-  top: -1px;
-  left: -1px;
-  width: 40px;
-  height: 40px;
-  color: var(--check-color);
-  opacity: 0;
-  transition:
-    color 0.3s ease,
-    opacity 0.3s ease;
+  &__check {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 40px;
+    height: 40px;
+    color: var(--check-color);
+    opacity: 0;
+    transition:
+      color 0.3s ease,
+      opacity 0.3s ease;
+  }
 }

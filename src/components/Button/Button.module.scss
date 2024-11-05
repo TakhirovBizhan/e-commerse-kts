@@ -1,38 +1,40 @@
 @use "../../styles/variables" as *;
 
+@use "../../styles/variables" as *;
+
 .button {
   background-color: $brandColor;
   display: inline-flex;
   align-items: center;
-  padding: $space_s $space_l $space_s $space_l;
+  padding: $space_s $space_l;
   border: none;
-  /* outline: none; */
   color: $white;
   height: 52px;
-}
 
-.button_loader {
-  fill: var($white);
-}
+  &__loader {
+    fill: $white;
+  }
 
-.button:hover {
-  background-color: $brandHover;
-}
+  &:hover {
+    background-color: $brandHover;
+  }
 
-.button:disabled {
-  pointer-events: none;
-  cursor: default;
-}
-.button_disabled {
-  background-color: $lightGrey;
-}
+  &:disabled {
+    pointer-events: none;
+    cursor: default;
+  }
 
-.button:active {
-  background-color: $colorAccentActive;
-}
+  &--disabled {
+    background-color: $lightGrey;
+  }
 
-.button .button_loader {
-  flex-shrink: 0;
-  margin-right: 8px;
-  color: currentColor;
+  &:active {
+    background-color: $colorAccentActive;
+  }
+
+  .button__loader {
+    flex-shrink: 0;
+    margin-right: 8px;
+    color: currentColor;
+  }
 }

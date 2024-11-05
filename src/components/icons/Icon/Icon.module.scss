@@ -4,16 +4,18 @@
   display: inline-block;
   flex-shrink: 0;
   color: currentColor;
-}
 
-.icon_color_primary {
-  color: $primaryColor;
-}
+  &_color {
+    &_primary {
+      color: $primaryColor;
+    }
 
-.icon_color_secondary {
-  color: $colorSecondary;
-}
+    &_secondary {
+      color: $colorSecondary;
+    }
 
-.icon_color_accent {
-  color: $brandColor;
+    &_accent {
+      color: $brandColor;
+    }
+  }
 }
