@@ -9,6 +9,7 @@ export const useProducts = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        if (!loading) return;
         const result = await axios.get('https://api.escuelajs.co/api/v1/products');
         setData(result.data);
       } catch (error) {
@@ -18,7 +19,7 @@ export const useProducts = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [loading]);
 
   return { data, loading };
 };

@@ -1,5 +1,85 @@
 @use "../../../styles/variables.scss" as *;
 
+.product {
+  display: flex;
+  gap: $space_xxxl;
+
+  &__photo {
+    position: relative;
+    width: 600px;
+    height: 600px;
+
+    button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    &__item {
+      width: 600px;
+    }
+
+    &__icon_right {
+      position: absolute;
+      right: 2px;
+      top: 40%;
+      border-radius: 40px;
+    }
+
+    &__icon_left {
+      position: absolute;
+      left: 2px;
+      top: 40%;
+      border-radius: 40px;
+    }
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: $space_xxxl;
+
+    &__title_description {
+      display: flex;
+      flex-direction: column;
+      gap: $space_xl;
+    }
+
+    &__purchase {
+      padding-top: $space_xxl;
+      display: flex;
+      flex-direction: column;
+      gap: $space_xxxl;
+
+      &__buttons {
+        display: flex;
+        gap: $space_xxxl;
+      }
+    }
+  }
+}
+
+.go_back {
+  height: $space_xxxl;
+  margin-top: 58px;
+  margin-bottom: $space_xxl;
+  display: flex;
+  gap: $space_xs;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.blocked {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.loader {
+  @include loader;
+}
+
 .related {
   &__block {
     margin-top: $space_xxxl;

@@ -1,60 +1,55 @@
-import { Link, useParams } from "react-router-dom";
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { IData } from '../../../config/DataInterfaces';
-import Text from "../../../components/Text";
-import styles from './ProductPage.module.scss';
-import '../../../styles/variables.scss';
+import { useNavigate, useParams } from "react-router-dom";
+import { useProduct } from "../../../config/api";
+import Loader from "../../../components/Loader";
+import s from './ProductPage.module.scss';
 import Button from "../../../components/Button";
-import Card from "../../../components/Card";
-import ProductCard from "./ProductCard";
+import Text from "../../../components/Text";
+import leftArrow from '../../../../public/leftArrow.svg';
+import RelatedProducts from "./RelatedProducts";
+import ProductCarousel from "./ProductCarousel";
 
 export const ProductPage = () => {
 
-    const id = useParams().id;
-    const [data, setData] = useState<IData>();
-    const [related, setRelated] = useState<IData[]>([]);
-    useEffect(() => {
-        const fetch = async () => {
-            try {
-                const response = await axios.get(`https://api.escuelajs.co/api/v1/products/${id}`);
-                const relatedData = await axios.get('https://api.escuelajs.co/api/v1/products');
-                setRelated(relatedData.data);
-                setData(response.data);
-            } catch (e) {
-                console.error(e);
-            }
-        };
-        fetch();
-    }, [id]);
+    const { id } = useParams();
+    const { data, loading } = useProduct(id);
+    const navigate = useNavigate();
 
     return (
-        <>
-                <div className="wrapper">
-                    <ProductCard></ProductCard>
-                    <div className={styles.related__block}>
-                        <Text className={styles.related__text} view="title">Related Items</Text>
-                        <div className={styles.related__list}>
-                            {related
-                                .filter(product => product.category.name === data?.category.name)
-                                .slice(0, 3) 
-                                .map(product => (
-                                    <Link key={product.id} to={`/main/product/${product.id}`}>
-                                        <Card
-                                            className={styles.main__card_list__grid__item}
-                                            image={product.images[0]}
-                                            captionSlot={product.category.name}
-                                            title={product.title}
-                                            subtitle={product.description}
-                                            contentSlot={`$${product.price}`}
-                                            actionSlot={<Button><Text view='button'>Add to Cart</Text></Button>}
-                                        />
-                                    </Link>
-                                ))}
-                        </div>
-                    </div>
+        <div className="wrapper">
+            {loading ? (
+                <Loader className={s.loader} size='l' />
+            ) : (
+                <div>
+                    {data ? (
+                        <>
+                            <button className={s.go_back} onClick={() => navigate(-1)}>
+                                <img src={leftArrow} alt="previous page" />
+                                <Text view="p-20">Назад</Text>
+                            </button>
+                            <div className={s.product}>
+                                <ProductCarousel images={data.images}></ProductCarousel>
+                                <div className={s.product__text}>
+                                    <div className={s.product__text__title_description}>
+                                        <Text view='title'>{data?.title}</Text>
+                                        <Text view="p-20" color="secondary">{data?.description}</Text>
+                                    </div>
+                                    <div className={s.product__text__purchase}>
+                                        <Text view="title">${data?.price}</Text>
+                                        <div className={s.product__text__purchase__buttons}>
+                                            <Button>Buy Now</Button>
+                                            <Button className={s.product__button}>Add to Cart</Button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <RelatedProducts {...data}></RelatedProducts>
+                        </>
+                    ) : (
+                        <div>No data</div>
+                    )}
                 </div>
-        </>
+            )}
+        </div>
     )
 }
 

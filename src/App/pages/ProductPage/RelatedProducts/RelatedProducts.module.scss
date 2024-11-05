@@ -1,0 +1,21 @@
+@use "../../../../styles/variables.scss" as *;
+
+.loader {
+  @include loader;
+}
+
+.related {
+  &__block {
+    margin-top: $space_xxxl;
+  }
+
+  &__text {
+    margin-bottom: $space_xxl;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 100px;
+  }
+}
