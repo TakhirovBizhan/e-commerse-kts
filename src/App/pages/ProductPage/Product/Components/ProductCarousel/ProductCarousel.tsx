@@ -1,8 +1,8 @@
 import { memo, useEffect, useState } from 'react';
 import cn from 'classnames';
 import s from './ProductCarousel.module.scss';
-import rightArrowCircle from '../../../../../public/rightArrowCircle.svg';
-import leftArrowCircle from '../../../../../public/leftArrowCircle.svg';
+import rightArrowCircle from '../../../../../../../public/rightArrowCircle.svg';
+import leftArrowCircle from '../../../../../../../public/leftArrowCircle.svg';
 import { useParams } from 'react-router-dom';
 
 interface ProductImageCarouselProps {

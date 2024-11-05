@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import Button from "../../../../components/Button";
-import Text from "../../../../components/Text";
-import Card from "../../../../components/Card";
-import { IData } from "../../../../config/DataInterfaces";
-import { useProducts } from "../../../../config/api";
-import Loader from "../../../../components/Loader";
+import Button from "../../../../../../components/Button";
+import Text from "../../../../../../components/Text";
+import Card from "../../../../../../components/Card";
+import { IData } from "../../../../../../config/DataInterfaces";
+import { useProducts } from "../../../../../../config/api";
+import Loader from "../../../../../../components/Loader";
 import s from './RelatedProducts.module.scss'
 import { memo } from "react";
 
