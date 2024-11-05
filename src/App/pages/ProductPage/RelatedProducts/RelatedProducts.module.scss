@@ -4,12 +4,10 @@
   @include loader;
 }
 
-.related {
-  &__block {
-    margin-top: $space_xxxl;
-  }
+.root {
+  margin-top: $space_xxxl;
 
-  &__text {
+  &__title {
     margin-bottom: $space_xxl;
   }
 

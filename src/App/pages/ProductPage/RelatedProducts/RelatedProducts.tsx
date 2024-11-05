@@ -16,16 +16,16 @@ export const RelatedProducts = (product: IData) => {
             {loading ? (
                 <Loader className={s.loader} size='l' />
             ) : (
-                <div className={s.related__block}>
-                    <Text className={s.related__text} view="title">Related Items</Text>
-                    <div className={s.related__list}>
+                <div className={s.root}>
+                    <Text className={s.root__title} view="title">Related Items</Text>
+                    <div className={s.root__list}>
                         {data
                             .filter(el => el.category.name === product?.category.name)
                             .slice(0, 3)
                             .map(el => (
                                 <Link key={el.id} to={`/main/product/${el.id}`}>
                                     <Card
-                                        className={s.main__card_list__grid__item}
+                                        
                                         image={el.images[0]}
                                         captionSlot={el.category.name}
                                         title={el.title}
