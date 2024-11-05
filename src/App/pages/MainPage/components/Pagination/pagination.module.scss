@@ -1,22 +1,5 @@
 @use "../../../../../styles/variables.scss" as *;
 
-.root {
-  margin-top: $space_xxxl;
-
-  &__text_block {
-    display: flex;
-    align-items: center;
-    gap: $space_xl;
-  }
-
-  &__grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 30px;
-  }
-}
-
 .pagination {
   display: flex;
   align-items: center;

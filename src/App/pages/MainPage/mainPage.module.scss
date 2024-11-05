@@ -21,4 +21,8 @@
     flex-direction: column;
     gap: $space_xl;
   }
+
+  &__pagination_block {
+    margin-top: $space_xxxl;
+  }
 }
