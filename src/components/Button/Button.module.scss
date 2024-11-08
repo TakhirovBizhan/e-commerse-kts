@@ -1,0 +1,40 @@
+@use "../../styles/variables" as *;
+
+@use "../../styles/variables" as *;
+
+.button {
+  background-color: $brandColor;
+  display: inline-flex;
+  align-items: center;
+  padding: $space_s $space_l;
+  border: none;
+  color: $white;
+  height: 52px;
+
+  &__loader {
+    fill: $white;
+  }
+
+  &:hover {
+    background-color: $brandHover;
+  }
+
+  &:disabled {
+    pointer-events: none;
+    cursor: default;
+  }
+
+  &--disabled {
+    background-color: $lightGrey;
+  }
+
+  &:active {
+    background-color: $colorAccentActive;
+  }
+
+  .button__loader {
+    flex-shrink: 0;
+    margin-right: 8px;
+    color: currentColor;
+  }
+}

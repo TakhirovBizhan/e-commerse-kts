@@ -1,0 +1,29 @@
+@use "../../../../../styles/variables.scss" as *;
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+
+  button {
+    background-color: transparent;
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+
+    &.active {
+      background-color: $brandColor;
+      color: #fff;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}
+.loader {
+  @include loader;
+}

@@ -1,0 +1,50 @@
+@use "./Roboto/fonts.scss";
+@use "./variables.scss" as *;
+
+html,
+body {
+  font-family: "Roboto";
+  margin: 0;
+  padding: 0;
+  background-color: $backgroundColor;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+figure,
+pre {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul,
+li {
+  list-style-type: none;
+}
+
+::selection {
+  color: rgb(211, 240, 168);
+  background-color: rgb(31, 36, 40);
+}
+
+.wrapper {
+  max-width: 1240px;
+  margin: auto;
+}
+
+.active p {
+  color: $brandColor;
+}

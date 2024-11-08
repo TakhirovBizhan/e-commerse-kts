@@ -1,0 +1,21 @@
+@use "../../../styles/variables.scss" as *;
+
+.icon {
+  display: inline-block;
+  flex-shrink: 0;
+  color: currentColor;
+
+  &_color {
+    &_primary {
+      color: $primaryColor;
+    }
+
+    &_secondary {
+      color: $colorSecondary;
+    }
+
+    &_accent {
+      color: $brandColor;
+    }
+  }
+}
