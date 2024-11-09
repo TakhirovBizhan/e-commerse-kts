@@ -9,14 +9,15 @@ import { ROUTES } from '../config/routes';
 function App() {
   return (
     <BrowserRouter>
-    <Header />
-          <Routes>
-        <Route path={ROUTES.root} element={<MainPage />} />
-        <Route path={ROUTES.product} element={<ProductPage />} />
-        <Route path={ROUTES.categories} element={<Categories />} />
-        <Route path={ROUTES.about_us} element={<About_us />} />
-        <Route path="*" element={<Navigate to="/main" replace />} />   
-      </Routes>   
+      <Routes>
+        <Route path={'/'} element={<Header />}>
+          <Route path={ROUTES.root} element={<MainPage />} />
+          <Route path={ROUTES.product} element={<ProductPage />} />
+          <Route path={ROUTES.categories} element={<Categories />} />
+          <Route path={ROUTES.about_us} element={<About_us />} />
+          <Route path="*" element={<Navigate to={ROUTES.root} replace />} />
+        </Route>
+      </Routes>
     </BrowserRouter>
   )
 }

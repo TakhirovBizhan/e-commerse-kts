@@ -1,4 +1,4 @@
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, Outlet } from 'react-router-dom';
 import Text from '../Text';
 import bagSvg from '../../../public/bag.svg';
 import userSvg from '../../../public/user.svg';
@@ -7,6 +7,7 @@ import styles from './Header.module.scss';
 
 export const Header = () => {
   return (
+    <>
     <header className={styles.header}>
       <div className={styles.header__wrapper}>
         <Link to='/main'>
@@ -44,5 +45,7 @@ export const Header = () => {
         </div>
       </div>
     </header>
+    <Outlet />
+    </>
   );
 };
