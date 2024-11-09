@@ -1,4 +1,4 @@
-type ICategory = {
+export type ICategory = {
   id: number;
   name: string;
   image: string;
@@ -16,3 +16,5 @@ export type IData = {
   creationAt: string;
   updatedAt: string;
 };
+
+
