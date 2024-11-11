@@ -4,17 +4,16 @@ import rightArrow from '../../../../../../public/rightArrow.svg'
 import s from './pagination.module.scss'
 import { IData } from '../../../../../config/DataInterfaces';
 import ProductList from '../ProductList/ProductList';
+import { useStores } from '../../../../../store/rootStoreContext';
 
-interface PaginationProps {
-  data: IData[],
-}
 
-export const Pagination: React.FC<PaginationProps>= ({data}) => {
+export const Pagination = () => {
+  const { AllProductsStore } = useStores();
 
   const [currentPage, setCurrentPage] = useState<number>(1);
   const itemsPerPage = 9;
-  const totalPages = Math.ceil(data.length / itemsPerPage);
-  const currentData = data.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+  const totalPages = Math.ceil(AllProductsStore.productsLength / itemsPerPage);
+  const currentData = (AllProductsStore.allProducts?.value as IData[])?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
   const handleNextPage = () => setCurrentPage((prev) => Math.min(prev + 1, totalPages));
   const handlePreviousPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));

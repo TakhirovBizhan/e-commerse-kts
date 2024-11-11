@@ -5,16 +5,19 @@ import { fromPromise, IPromiseBasedObservable } from "mobx-utils";
 
 
 class AllProductsStore {
-
     allProducts?: IPromiseBasedObservable<IData[]>;
 
     constructor() {
-        makeAutoObservable(this)
+        makeAutoObservable(this);
     }
 
-     getProductsAction = () => {
-        this.allProducts = fromPromise(getProducts())
-     }
+    get productsLength() {
+        return (this.allProducts?.value as IData[])?.length || 0;
+    }
+
+    getProductsAction = () => {
+        this.allProducts = fromPromise(getProducts());
+    }
 }
 
 export default new AllProductsStore();

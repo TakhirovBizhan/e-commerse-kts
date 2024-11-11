@@ -1,18 +1,18 @@
 
 import Text from '../../../../../components/Text'
+import { useStores } from '../../../../../store/rootStoreContext';
 import s from './ProductsCount.module.scss'
 
-interface TotalProductsProps {
-    dataLength: number
-  }
 
-export const ProductsCount: React.FC<TotalProductsProps>= ({dataLength}) => {
+export const ProductsCount = () => {
+
+  const { AllProductsStore } = useStores();
 
   return (
 
         <div className={s.text_block}>
           <Text view='min-title' weight='bold'>Total Product</Text>
-          <Text view='p-20' color='accent'>{dataLength}</Text>
+          <Text view='p-20' color='accent'>{AllProductsStore.productsLength}</Text>
         </div>
   )
 }

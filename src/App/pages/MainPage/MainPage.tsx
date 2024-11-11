@@ -44,8 +44,8 @@ export const MainPage = observer(() => {
                 There was an error loading the products. Please try again later.
             </div>
             <div className={s.root__pagination_block}>
-              <ProductsCount dataLength={AllProductsStore.allProducts.value.length} />
-              <Pagination data={AllProductsStore.allProducts?.value} />
+              <ProductsCount />
+              <Pagination />
             </div>
         </div>
       </main>
