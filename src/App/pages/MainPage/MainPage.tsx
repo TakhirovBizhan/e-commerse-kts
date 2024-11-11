@@ -13,16 +13,16 @@ import { useStores } from '../../../store/rootStoreContext';
 
 
 export const MainPage = observer(() => {
-  const { AllProducts} = useStores;
+  const { AllProductsStore } = useStores();
 
   useEffect(() => {
     AllProductsStore.getProductsAction();
-  }, [getProductsAction]);
+  }, [AllProductsStore]);
 
   if (AllProductsStore.allProducts === undefined) {
     return null;
   }
-  return AllProductsStore.allProducts.case({
+  return AllProductsStore.allProducts?.case({
     pending: ()=> <><Loader/></>,
     rejected: () => <div>error</div>,
     fulfilled: () =>
@@ -44,8 +44,8 @@ export const MainPage = observer(() => {
                 There was an error loading the products. Please try again later.
             </div>
             <div className={s.root__pagination_block}>
-              <ProductsCount dataLength={allProducts.value.length} />
-              <Pagination data={allProducts?.value} />
+              <ProductsCount dataLength={AllProductsStore.allProducts.value.length} />
+              <Pagination data={AllProductsStore.allProducts?.value} />
             </div>
         </div>
       </main>
