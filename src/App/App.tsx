@@ -5,9 +5,12 @@ import { Header } from '../components/Header/Header';
 import { About_us } from './pages/about_us/About_us';
 import ProductPage from './pages/ProductPage';
 import { ROUTES } from '../config/routes';
+import { rootStoreContext } from '../store/rootStoreContext';
+import RootStore from '../store/rootStore';
 
 function App() {
   return (
+    <rootStoreContext.Provider value={new RootStore()}>
     <BrowserRouter>
       <Routes>
         <Route path={'/'} element={<Header />}>
@@ -19,6 +22,7 @@ function App() {
         </Route>
       </Routes>
     </BrowserRouter>
+    </rootStoreContext.Provider>
   )
 }
 

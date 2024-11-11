@@ -2,27 +2,12 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { ICategory, IData } from './DataInterfaces';
 
-export const useProducts = () => {
-  const [data, setData] = useState<IData[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        if (!loading) return;
-        const result = await axios.get('https://api.escuelajs.co/api/v1/products');
-        setData(result.data);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, [loading]);
+  export const getProducts = async () => {
+    const res = await axios.get<IData[]>("https://api.escuelajs.co/api/v1/products")
+    return res.data;
+  };
 
-  return { data, loading };
-};
 
 export const useProduct = (id: string | undefined) => {
   const [data, setData] = useState<IData | null>(null);

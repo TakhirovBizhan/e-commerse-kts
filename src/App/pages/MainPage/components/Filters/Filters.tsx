@@ -20,7 +20,7 @@ export const Filters = () => {
       options={options}
       value={filterValue}
       onChange={setFilterValue}
-      getTitle={(value) => (value.length === 0? 'Select filters' : value.map((option) => option.value).join(', '))}
+      getTitle={(value) => (value.length === 0 ? 'Select filters' : value.map((option) => option.value).join(', '))}
     />
   );
 };
