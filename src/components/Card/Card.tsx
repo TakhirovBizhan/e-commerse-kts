@@ -35,11 +35,13 @@ const Card: React.FC<CardProps> = ({
   loading,
 }) => {
   return (
-    <div className={cn(className, styles.card)} onClick={onClick}>
+    <>
       {loading ? (
-        <Skeleton />
+        <div className={styles.card}>
+          <Skeleton />
+        </div>
       ) : (
-        <>
+        <div className={cn(className, styles.card)} onClick={onClick}>
           <div className={styles.card__header}>
             <img className={styles.card__image} src={image} alt="card" />
           </div>
@@ -64,9 +66,9 @@ const Card: React.FC<CardProps> = ({
               <div className={styles.card__action}>{actionSlot}</div>
             </div>
           </div>
-        </>
+        </div>
       )}
-    </div>
+    </>
   );
 };
 
