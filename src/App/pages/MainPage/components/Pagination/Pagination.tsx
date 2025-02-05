@@ -1,16 +1,15 @@
 import { useState } from 'react';
-import leftArrow from '../../../../../../public/leftArrow.svg'
-import rightArrow from '../../../../../../public/rightArrow.svg'
-import s from './pagination.module.scss'
+import leftArrow from '../../../../../../public/leftArrow.svg';
+import rightArrow from '../../../../../../public/rightArrow.svg';
+import s from './pagination.module.scss';
 import { IData } from '../../../../../config/DataInterfaces';
 import ProductList from '../ProductList/ProductList';
 
 interface PaginationProps {
-  data: IData[],
+  data: IData[];
 }
 
-export const Pagination: React.FC<PaginationProps>= ({data}) => {
-
+export const Pagination: React.FC<PaginationProps> = ({ data }) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const itemsPerPage = 9;
   const totalPages = Math.ceil(data.length / itemsPerPage);
@@ -39,7 +38,7 @@ export const Pagination: React.FC<PaginationProps>= ({data}) => {
 
   return (
     <>
-    <ProductList currentData={currentData} />
+      <ProductList currentData={currentData} />
       <div className={s.pagination}>
         <button onClick={handlePreviousPage} disabled={currentPage === 1}>
           <img src={leftArrow} alt="previous page" />
@@ -57,14 +56,14 @@ export const Pagination: React.FC<PaginationProps>= ({data}) => {
             >
               {page}
             </button>
-          )
+          ),
         )}
         <button onClick={handleNextPage} disabled={currentPage === totalPages}>
           <img src={rightArrow} alt="next page" />
         </button>
       </div>
-      </>
-  )
-}
+    </>
+  );
+};
 
 export default Pagination;

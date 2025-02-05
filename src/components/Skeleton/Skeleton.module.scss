@@ -1,8 +1,12 @@
+@use "../../styles/variables" as *;
+
 .skeleton {
   position: relative;
   width: 100%;
-  background-color: var(--qc-bg-skeleton);
+  background-color: $lightGrey;
   overflow: hidden;
+  height: 100%;
+  border-radius: 10px;
 }
 
 .skeleton::after {
@@ -12,7 +16,7 @@
   left: -150%;
   width: 150%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, var(--qc-bg-skeleton-shimmer), transparent);
+  background: linear-gradient(90deg, transparent, $brandHover, transparent);
   animation: shimmer 1.5s infinite;
 }
 
