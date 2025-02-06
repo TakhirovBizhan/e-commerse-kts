@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { IData } from './DataInterfaces';
+import { IData } from '../config/DataInterfaces';
 
 export const useProducts = () => {
   const [data, setData] = useState<IData[]>([]);
