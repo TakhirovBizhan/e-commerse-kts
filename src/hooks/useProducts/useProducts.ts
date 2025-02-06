@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { IData } from '../config/DataInterfaces';
+import { IData } from '../../config/DataInterfaces';
 import { getProducts } from './getProducts';
 
 export const useProducts = () => {

@@ -1,6 +1,6 @@
 import axios from "axios";
-import { IData } from "../config/DataInterfaces";
-import { ErrorHandler } from "../utils/ErrorHandler";
+import { IData } from "../../config/DataInterfaces";
+import { ErrorHandler } from "../../utils/ErrorHandler";
 
 export const getProducts = async () => {
     try {
