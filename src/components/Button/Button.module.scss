@@ -1,22 +1,20 @@
 @use "../../styles/variables" as *;
 
-@use "../../styles/variables" as *;
-
 .button {
-  background-color: $brandColor;
+  background-color: $brand-color;
   display: inline-flex;
   align-items: center;
   padding: $space_s $space_l;
   border: none;
-  color: $white;
+  color: $bg-primary;
   height: 52px;
 
   &__loader {
-    fill: $white;
+    fill: $bg-primary;
   }
 
   &:hover {
-    background-color: $brandHover;
+    background-color: $brand-hover;
   }
 
   &:disabled {
@@ -25,11 +23,11 @@
   }
 
   &--disabled {
-    background-color: $lightGrey;
+    background-color: $light-grey;
   }
 
   &:active {
-    background-color: $colorAccentActive;
+    background-color: $color-accent-active;
   }
 
   .button__loader {

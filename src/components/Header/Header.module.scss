@@ -1,8 +1,8 @@
 @use "../../styles/variables" as *;
 
 .header {
-  background-color: $white;
-  border-bottom: 2px solid $whiteGrey;
+  background-color: $bg-primary;
+  border-bottom: 2px solid $bg-secondary-grey;
 
   &__wrapper {
     margin: auto;
@@ -19,17 +19,17 @@
 
     &__link {
       position: relative;
-      color: $primaryColor;
+      color: $primary-color;
       font-weight: normal;
       text-decoration: none;
       transition: color 0.3s;
 
       &:hover {
-        color: $brandColor;
+        color: $brand-color;
       }
 
       &__active {
-        color: $brandColor;
+        color: $brand-color;
         font-weight: bold;
 
         &::after {
@@ -39,7 +39,7 @@
           left: 0;
           width: 100%;
           height: 2px;
-          background-color: $brandColor;
+          background-color: $brand-color;
           border-radius: 1px;
         }
       }
@@ -57,7 +57,7 @@
 }
 
 .underscore_main {
-  background-color: $brandColor;
+  background-color: $brand-color;
   width: 80px;
   height: 1px;
 }

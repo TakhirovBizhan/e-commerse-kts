@@ -4,7 +4,7 @@
   width: 100%;
   width: 360px;
   height: 618px;
-  background-color: $white;
+  background-color: $bg-primary;
   transition: box-shadow 0.3s ease;
   overflow: hidden;
   cursor: pointer;
@@ -18,7 +18,7 @@
 
   &__header {
     position: relative;
-    background-color: $lightGrey;
+    background-color: $light-grey;
 
     &::after {
       content: "";

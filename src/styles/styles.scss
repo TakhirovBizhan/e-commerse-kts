@@ -6,7 +6,7 @@ body {
   font-family: "Roboto";
   margin: 0;
   padding: 0;
-  background-color: $backgroundColor;
+  background-color: $bg-secondary;
 }
 
 * {
@@ -46,5 +46,5 @@ li {
 }
 
 .active p {
-  color: $brandColor;
+  color: $brand-color;
 }

@@ -3,7 +3,7 @@
 .skeleton {
   position: relative;
   width: 100%;
-  background-color: $lightGrey;
+  background-color: $light-grey;
   overflow: hidden;
   height: 100%;
 }
@@ -15,7 +15,7 @@
   left: -150%;
   width: 150%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, $brandHover, transparent);
+  background: linear-gradient(90deg, transparent, $brand-hover, transparent);
   animation: shimmer 1.5s infinite;
 }
 

@@ -1,8 +1,8 @@
 @use "../../styles/variables" as *;
 
 .checkbox {
-  --bg-color: #{$white};
-  --check-color: #{$brandColor};
+  --bg-color: #{$bg-primary};
+  --check-color: #{$brand-color};
   --border-color: transparent;
 
   position: relative;
@@ -17,7 +17,7 @@
     background-color 0.3s ease;
 
   &:hover {
-    --border-color: #{$brandColor};
+    --border-color: #{$brand-color};
   }
 
   &--disabled {

@@ -1,12 +1,37 @@
-$brandColor: #518581;
-$brandHover: #86aaa7;
-$primaryColor: #000000;
-$colorSecondary: #afadb5;
-$colorAccentActive: #487773;
-$lightGrey: #d9d9d9;
-$white: #fff;
-$whiteGrey: #f3f3f3;
-$backgroundColor: #fafafa;
+.light {
+  --brand-color: #518581;
+  --brand-hover: #86aaa7;
+  --primary-color: #000000;
+  --color-secondary: #afadb5;
+  --color-accent-active: #487773;
+  --light-grey: #d9d9d9;
+  --bg-primary: #fff;
+  --bg-secondary-grey: #f3f3f3;
+  --bg-secondary: #fafafa;
+}
+
+.dark {
+  --brand-color: #86aaa7;
+  --brand-hover: #518581;
+  --primary-color: #ffffff;
+  --color-secondary: #d9d9d9;
+  --color-accent-active: #afadb5;
+  --light-grey: #afadb5;
+  --bg-primary: #000000;
+  --bg-secondary-grey: #333333;
+  --bg-secondary: #121212;
+}
+
+
+$brand-color: #518581;
+$brand-hover: #86aaa7;
+$primary-color: #000000;
+$color-secondary: #afadb5;
+$color-accent-active: #487773;
+$light-grey: #d9d9d9;
+$bg-primary: #fff;
+$bg-secondary-grey: #f3f3f3;
+$bg-secondary: #fafafa;
 $space_xxxl: 48px;
 $space_xxl: 32px;
 $space_xl: 24px;

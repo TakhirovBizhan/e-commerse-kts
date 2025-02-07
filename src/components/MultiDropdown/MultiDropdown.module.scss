@@ -10,14 +10,14 @@
     left: 0;
     z-index: 2;
     width: 100%;
-    background-color: $white;
+    background-color: $bg-primary;
     box-shadow: $shadow;
   }
 
   &__option {
     display: block;
     padding: $space_s $space_xs;
-    color: $primaryColor;
+    color: $primary-color;
     transition: color 0.3s ease;
     cursor: pointer;
     appearance: none;
@@ -26,11 +26,11 @@
     background: none;
 
     &:hover {
-      color: $colorSecondary;
+      color: $color-secondary;
     }
 
     &_selected {
-      color: $brandColor;
+      color: $brand-color;
     }
   }
 }

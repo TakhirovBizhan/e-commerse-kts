@@ -1,8 +1,8 @@
 @use "../../styles/variables" as *;
 
 .input {
-  --text-color: #{$primaryColor};
-  --bg-color: #{$white};
+  --text-color: #{$primary-color};
+  --bg-color: #{$bg-primary};
   --border-color: transparent;
 
   display: flex;
@@ -18,7 +18,7 @@
     background-color 0.3s ease;
 
   &--disabled {
-    --text-color: #{$primaryColor};
+    --text-color: #{$primary-color};
     pointer-events: none;
     color: rgba(0, 0, 0, 0.5);
   }
@@ -40,14 +40,14 @@
     transition: color 0.3s ease;
 
     &::placeholder {
-      color: $colorSecondary;
+      color: $color-secondary;
       opacity: 1;
     }
   }
 }
 
 .input:focus-within {
-  --border-color: #{$brandColor};
+  --border-color: #{$brand-color};
 }
 
 .input__after {

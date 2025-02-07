@@ -7,15 +7,15 @@
 
   &_color {
     &_primary {
-      color: $primaryColor;
+      color: $primary-color;
     }
 
     &_secondary {
-      color: $colorSecondary;
+      color: $color-secondary;
     }
 
     &_accent {
-      color: $brandColor;
+      color: $brand-color;
     }
   }
 }
