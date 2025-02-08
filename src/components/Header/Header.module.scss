@@ -5,6 +5,17 @@
   gap: 5px;
 }
 
+.icon {
+  border-radius: 10px;
+  padding: 5px 7px;
+  background-color: $brand-color;
+}
+
+.icon:hover {
+  background-color: $brand-hover;
+}
+
+
 .header {
   background-color: $bg-primary;
   border-bottom: 2px solid $bg-secondary-grey;

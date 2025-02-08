@@ -46,8 +46,12 @@ export const Header = () => {
         </nav>
         <div className={styles.header__icons_block}>
           <ThemeToggle />
-          <img src={bagSvg} alt="корзина" />
-          <img src={userSvg} alt="Профиль" />
+          <div className={styles.icon}>
+            <img className={styles.img} src={bagSvg} alt="корзина" />
+          </div>
+          <div className={styles.icon}>
+            <img className={styles.img} src={userSvg} alt="Профиль" />
+          </div>
         </div>
       </div>
     </header>
