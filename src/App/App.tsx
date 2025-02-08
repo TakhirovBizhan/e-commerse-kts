@@ -5,7 +5,7 @@ import { Header } from '../components/Header/Header';
 import { About_us } from './pages/about_us/About_us';
 import ProductPage from './pages/ProductPage';
 import { ROUTES } from '../config/routes';
-import { ThemeProvider } from './themeProvider';
+import { ThemeProvider } from '../hooks/useThemes/themeProvider';
 
 function App() {
   return (
