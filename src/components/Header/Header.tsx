@@ -2,7 +2,7 @@ import { NavLink, Link } from 'react-router-dom';
 import Text from '../Text';
 import bagSvg from '../../../public/bag.svg';
 import userSvg from '../../../public/user.svg';
-import logoSvg from '../../../public/logo.svg';
+import logoSvg from '../../../public/favicon.svg';
 import styles from './Header.module.scss';
 import { ThemeToggle } from '../ThemeButton/ThemeButton';
 
@@ -11,7 +11,12 @@ export const Header = () => {
     <header className={styles.header}>
       <div className={styles.header__wrapper}>
         <Link to="/main">
-          <img className={styles.header__logo} src={logoSvg} alt="Логотип" />
+          <div className={styles.logo}>
+            <img className={styles.header__logo} src={logoSvg} alt="Логотип" />
+            <Text view="min-title" tag="h1">
+              e-commerce
+            </Text>
+          </div>
         </Link>
         <nav className={styles.header__nav}>
           <NavLink

@@ -1,5 +1,10 @@
 @use "../../styles/variables" as *;
 
+.logo {
+  display: flex;
+  gap: 5px;
+}
+
 .header {
   background-color: $bg-primary;
   border-bottom: 2px solid $bg-secondary-grey;
@@ -47,7 +52,7 @@
   }
 
   &__logo {
-    width: 130.05px;
+    width: 50.05px;
   }
 
   &__icons_block {
