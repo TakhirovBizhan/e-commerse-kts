@@ -1,6 +1,8 @@
 import { useContext } from 'react';
 import { ThemeContext } from '../../hooks/useThemes/themeContext';
-import Button from '../Button';
+import moon from '../../../public/moon.svg';
+import sun from '../../../public/sun.svg';
+import s from './ThemeButton.module.scss';
 
 export const ThemeToggle = () => {
   const themeContext = useContext(ThemeContext);
@@ -15,5 +17,9 @@ export const ThemeToggle = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
   };
 
-  return <Button onClick={toggleTheme}>Переключить тему (текущая: {theme})</Button>;
+  return (
+    <button onClick={toggleTheme} className={s.button}>
+      <img className={s.img} src={theme === 'dark' ? moon : sun} />
+    </button>
+  );
 };
