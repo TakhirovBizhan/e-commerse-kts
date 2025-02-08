@@ -14,10 +14,8 @@ export const MainPage = () => {
     <main className={s.root}>
       <div className="wrapper">
         <div className={s.root__text_block}>
-          <Text view="title" color="secondary">
-            Products
-          </Text>
-          <Text view="p-20" color="secondary">
+          <Text view="title">Products</Text>
+          <Text view="p-20">
             We display products based on the latest products we have, if you want to see our old products please enter
             the name of the item
           </Text>
