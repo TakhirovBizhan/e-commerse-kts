@@ -2,7 +2,9 @@
 @use "../../../styles/styles.scss" as *;
 
 .wrapper {
-    @include wrapper
+    @include wrapper;
+    display: flex;
+    justify-content: center;
 }
 
 main {
