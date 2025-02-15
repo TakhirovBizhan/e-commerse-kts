@@ -12,10 +12,43 @@
   border: none;
 }
 
+.logo_burger_block {
+  display: flex;
+}
+
+.burger_btn {
+  display: none;
+  border: none;
+  background-color: transparent;
+}
+
+.img {
+  width: 20px;
+}
+
+
 .icon:hover {
   background-color: $brand-hover;
 }
 
+.title {
+  display: auto;
+}
+
+@media (max-width: 800px) {
+  .title {
+    display: none;
+  }
+
+  .burger_btn {
+    display: block;
+  }
+
+  .header__nav {
+    display: none !important;
+  }
+
+}
 
 .header {
   background-color: $bg-primary;
@@ -28,6 +61,7 @@
     justify-content: space-between;
     height: 90px;
     max-width: 1240px;
+    padding: 0px 8px;
   }
 
   &__nav {
