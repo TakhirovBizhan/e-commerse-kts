@@ -8,6 +8,7 @@
   border: none;
   color: $bg-primary;
   height: 52px;
+  white-space: nowrap;
 
   &__loader {
     fill: $bg-primary;

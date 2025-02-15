@@ -12,7 +12,7 @@ export const MainPage = () => {
 
   return (
     <main className={s.root}>
-      <div className="wrapper">
+      <div className={s.wrapper}>
         <div className={s.root__text_block}>
           <Text view="title">Products</Text>
           <Text view="p-20">

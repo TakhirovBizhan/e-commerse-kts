@@ -1,4 +1,5 @@
 @use "../../../styles/variables.scss" as *;
+@use "../../../styles/styles.scss" as *;
 
 .root {
   margin-bottom: 100px;
@@ -25,4 +26,8 @@
   &__pagination_block {
     margin-top: $space_xxxl;
   }
+}
+
+.wrapper {
+  @include wrapper
 }

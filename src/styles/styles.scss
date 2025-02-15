@@ -40,9 +40,10 @@ li {
   background-color: rgb(111, 75, 153);
 }
 
-.wrapper {
+@mixin wrapper() {
   max-width: 1240px;
   margin: auto;
+  padding: 0 8px;
 }
 
 .active p {
