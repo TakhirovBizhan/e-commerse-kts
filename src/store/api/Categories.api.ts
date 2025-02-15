@@ -4,7 +4,7 @@ import { api } from "./api";
 export const categoriesApi = api.injectEndpoints({
     endpoints: builder => ({
 
-        getCategories: builder.query<ICategory, void>({
+        getCategories: builder.query<ICategory[], void>({
             query: () => `/categories`,
             providesTags: ['categories']
         }),

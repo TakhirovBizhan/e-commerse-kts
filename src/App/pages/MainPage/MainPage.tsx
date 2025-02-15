@@ -4,11 +4,11 @@ import '../../../styles/styles.scss';
 import SearchInput from './components/SearchInput/SearchInput';
 import Filters from './components/Filters';
 import Pagination from './components/Pagination';
-import { useProducts } from '../../../api/api';
 import ProductsCount from './components/ProductsCount';
+import { useGetAllProductsQuery } from '../../../store/api/Products.api';
 
 export const MainPage = () => {
-  const { data, loading } = useProducts();
+  const { data, isLoading } = useGetAllProductsQuery();
 
   return (
     <main className={s.root}>
@@ -25,8 +25,14 @@ export const MainPage = () => {
           <Filters></Filters>
         </div>
         <div className={s.root__pagination_block}>
-          <ProductsCount dataLength={data.length} loading={loading} />
-          <Pagination data={data}></Pagination>
+          {data ? (
+            <>
+              <ProductsCount dataLength={data.length} loading={isLoading} />
+              <Pagination data={data}></Pagination>
+            </>
+          ) : (
+            <div>no data</div>
+          )}
         </div>
       </div>
     </main>
