@@ -28,7 +28,7 @@ export const MainPage = () => {
           {data ? (
             <>
               <ProductsCount dataLength={data.length} loading={isLoading} />
-              <Pagination data={data}></Pagination>
+              <Pagination pageCount={data.length}></Pagination>
             </>
           ) : (
             <div>no data</div>

@@ -5,8 +5,12 @@ import { Link } from 'react-router-dom';
 import s from './ProductList.module.scss';
 import { useGetProductsQuery } from '../../../../../store/api/Products.api';
 
-export const ProductList: React.FC = () => {
-  const { data, isLoading, error } = useGetProductsQuery();
+type ProductListProps = {
+  page: number;
+};
+
+export const ProductList: React.FC<ProductListProps> = ({ page }) => {
+  const { data, isLoading, error } = useGetProductsQuery({ page });
 
   return (
     <div className={s.root}>
