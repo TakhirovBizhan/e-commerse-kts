@@ -3,8 +3,8 @@ import { api } from "./api";
 
 export const productsApi = api.injectEndpoints({
     endpoints: builder => ({
-        getProducts: builder.query<IData[], { page?: number, filter?: string, search?: string }>({
-            query: ({ page = 0, filter, search }) => {
+        getProducts: builder.query<IData[], { page?: number, filter?: string, search?: string } | void>({
+            query: ({ page = 0, filter, search } = {}) => {
                 const urlParams = new URLSearchParams();
                 urlParams.append("offset", page.toString())
                 urlParams.append("limit", '9')

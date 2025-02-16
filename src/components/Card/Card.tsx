@@ -7,11 +7,11 @@ export type CardProps = {
   /** Дополнительный classname */
   className?: string;
   /** URL изображения */
-  image: string;
+  image?: string;
   /** Слот над заголовком */
   captionSlot?: React.ReactNode;
   /** Заголовок карточки */
-  title: React.ReactNode;
+  title?: React.ReactNode;
   /** Описание карточки */
   subtitle?: React.ReactNode;
   /** Содержимое карточки (футер/боковая часть), может быть пустым */

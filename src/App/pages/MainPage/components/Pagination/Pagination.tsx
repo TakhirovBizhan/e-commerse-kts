@@ -13,7 +13,6 @@ export const Pagination: React.FC<PaginationProps> = ({ data }) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const itemsPerPage = 9;
   const totalPages = Math.ceil(data.length / itemsPerPage);
-  const currentData = data.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
   const handleNextPage = () => setCurrentPage((prev) => Math.min(prev + 1, totalPages));
   const handlePreviousPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
@@ -38,7 +37,7 @@ export const Pagination: React.FC<PaginationProps> = ({ data }) => {
 
   return (
     <>
-      <ProductList currentData={currentData} />
+      <ProductList />
       <div className={s.pagination}>
         <button onClick={handlePreviousPage} disabled={currentPage === 1}>
           <img src={leftArrow} alt="previous page" />
