@@ -20,7 +20,6 @@ export const Pagination: React.FC<PaginationProps> = ({ pageCount }) => {
   const handlePreviousPage = () => dispatch(decrementPage());
   const handlePageClick = (newPage: number) => {
     dispatch(setPage(newPage));
-    console.log(statePage);
   };
 
   const renderPageButtons = () => {

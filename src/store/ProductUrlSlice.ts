@@ -8,7 +8,7 @@ export interface ProductUrlState {
 }
 
 const initialState: ProductUrlState = {
-    page: 0,
+    page: 1,
     filter: '',
     search: '',
 };
