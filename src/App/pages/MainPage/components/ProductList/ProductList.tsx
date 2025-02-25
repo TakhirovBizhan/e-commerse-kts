@@ -4,13 +4,16 @@ import Text from '../../../../../components/Text';
 import { Link } from 'react-router-dom';
 import s from './ProductList.module.scss';
 import { useGetProductsQuery } from '../../../../../store/api/Products.api';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../../../store';
 
 type ProductListProps = {
   page: number;
 };
 
 export const ProductList: React.FC<ProductListProps> = ({ page }) => {
-  const { data, isLoading, error } = useGetProductsQuery({ page });
+  const search = useSelector((state: RootState) => state.productUrl.search);
+  const { data, isLoading, error } = useGetProductsQuery({ page, search });
 
   return (
     <div className={s.root}>

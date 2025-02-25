@@ -3,17 +3,21 @@ import Input from '../../../../../components/Input';
 import Button from '../../../../../components/Button';
 import s from './searchInput.module.scss';
 import useDebounce from '../../../../../hooks/UseDebounce';
+import { setSearch } from '../../../../../store/ProductUrlSlice';
+import { useDispatch } from 'react-redux';
 
 export const SearchInput = () => {
   const [inputValue, setInputValue] = useState<string>('');
   const debouncedSearchTerm = useDebounce(inputValue, 600);
+  const dispatch = useDispatch();
 
   const handleSearch = () => {
     console.log('searching for', inputValue);
+    dispatch(setSearch(inputValue));
   };
 
   useEffect(() => {
-    if (debouncedSearchTerm) {
+    if (debouncedSearchTerm !== undefined) {
       handleSearch();
     }
   }, [debouncedSearchTerm]);
