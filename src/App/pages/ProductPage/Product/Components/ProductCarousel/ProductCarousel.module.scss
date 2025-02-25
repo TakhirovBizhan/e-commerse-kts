@@ -4,8 +4,8 @@
   display: flex;
   gap: $space_xxxl;
   position: relative;
-  width: 600px;
-  height: 600px;
+  max-width: 600px;
+  max-height: 600px;
 
   button {
     background-color: transparent;
@@ -15,6 +15,8 @@
 
   &__image {
     width: 600px;
+    height: 600px;
+    object-fit: contain;
   }
 
   &__icon_right {
@@ -39,4 +41,17 @@
 
 .loader {
   @include loader;
+}
+
+@media (max-width: 1024px) {
+  .root {
+    margin: auto;
+    max-width: 600px;
+    max-height: 600px;
+
+    &__image {
+      max-width: 100%;
+      height: auto;
+    }
+  }
 }

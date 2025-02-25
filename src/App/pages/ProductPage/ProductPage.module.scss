@@ -49,3 +49,9 @@
 .loader {
   @include loader;
 }
+
+.wrapper {
+  padding: 8px;
+  margin: auto;
+  max-width: 1440px;
+}

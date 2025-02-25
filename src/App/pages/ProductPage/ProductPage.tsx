@@ -12,7 +12,7 @@ export const ProductPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="wrapper">
+    <div className={s.wrapper}>
       <button className={s.go_back} onClick={() => navigate(-1)}>
         <img src={leftArrow} alt="previous page" />
         <Text view="p-20">Назад</Text>
