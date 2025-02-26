@@ -24,8 +24,8 @@ export const MainPage = () => {
           </Text>
         </div>
         <div className={s.root__search_block}>
-          <SearchInput></SearchInput>
-          <Filters></Filters>
+          <SearchInput />
+          <Filters />
         </div>
         <div className={s.root__pagination_block}>
           {data ? (
