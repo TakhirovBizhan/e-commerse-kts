@@ -23,8 +23,20 @@ export const productsApi = api.injectEndpoints({
             },
             providesTags: ['products']
         }),
-        getAllProducts: builder.query<IData[], void>({
-            query: () => `/products`,
+        getAllProducts: builder.query<IData[], { filter?: string, search?: string } | void>({
+            query: ({ filter, search } = {}) => {
+                const urlParams = new URLSearchParams();
+                if (filter) urlParams.append('filter', filter);
+
+                if (search) {
+                    urlParams.set('title', search);
+                } else {
+                    urlParams.delete('title');
+                }
+
+                console.log(urlParams.toString())
+                return `/products?${urlParams.toString()}`
+            },
             providesTags: ['products']
         }),
         getProduct: builder.query<IData, number | void>({

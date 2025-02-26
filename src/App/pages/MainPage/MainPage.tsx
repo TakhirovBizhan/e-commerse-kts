@@ -6,13 +6,12 @@ import Filters from './components/Filters';
 import Pagination from './components/Pagination';
 import ProductsCount from './components/ProductsCount';
 import { useGetAllProductsQuery } from '../../../store/api/Products.api';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from '../../../store';
 
 export const MainPage = () => {
-  const { data, isLoading } = useGetAllProductsQuery();
-  const stateFilter = useSelector((state: RootState) => state.productUrl.filter);
-  const dispatch = useDispatch();
+  const search = useSelector((state: RootState) => state.productUrl.search);
+  const { data, isLoading } = useGetAllProductsQuery({ search });
 
   return (
     <main className={s.root}>

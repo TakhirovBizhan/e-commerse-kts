@@ -3,18 +3,17 @@ import Card from '../../../../../components/Card';
 import Text from '../../../../../components/Text';
 import { Link } from 'react-router-dom';
 import s from './ProductList.module.scss';
-import { useGetProductsQuery } from '../../../../../store/api/Products.api';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../../../../store';
+import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
+import { SerializedError } from '@reduxjs/toolkit';
+import { IData } from '../../../../../config/DataInterfaces';
 
 type ProductListProps = {
-  page: number;
+  data: IData[];
+  isLoading: boolean;
+  error: FetchBaseQueryError | SerializedError | undefined;
 };
 
-export const ProductList: React.FC<ProductListProps> = ({ page }) => {
-  const search = useSelector((state: RootState) => state.productUrl.search);
-  const { data, isLoading, error } = useGetProductsQuery({ page, search });
-
+export const ProductList: React.FC<ProductListProps> = ({ data, isLoading, error }) => {
   return (
     <div className={s.root}>
       {isLoading ? (
