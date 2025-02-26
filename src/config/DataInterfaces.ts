@@ -16,3 +16,8 @@ export type IData = {
   creationAt: string;
   updatedAt: string;
 };
+
+export type TFilters = {
+  price_min: number | null,
+  price_max: number | null
+}

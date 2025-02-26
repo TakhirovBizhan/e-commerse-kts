@@ -13,9 +13,8 @@ interface PaginationProps {
 }
 
 export const Pagination: React.FC<PaginationProps> = ({ pageCount }) => {
-  const page = useSelector((state: RootState) => state.productUrl.page);
-  const search = useSelector((state: RootState) => state.productUrl.search);
-  const { data, isLoading, error } = useGetProductsQuery({ page, search });
+  const { page, search, rangeFilter } = useSelector((state: RootState) => state.productUrl);
+  const { data, isLoading, error } = useGetProductsQuery({ page, search, rangeFilter });
   const dispatch = useDispatch();
 
   const totalPages = Math.ceil(pageCount / 10);

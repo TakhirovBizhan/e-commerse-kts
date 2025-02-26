@@ -10,8 +10,8 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../../store';
 
 export const MainPage = () => {
-  const search = useSelector((state: RootState) => state.productUrl.search);
-  const { data, isLoading } = useGetAllProductsQuery({ search });
+  const { search, rangeFilter } = useSelector((state: RootState) => state.productUrl);
+  const { data, isLoading } = useGetAllProductsQuery({ search, rangeFilter });
 
   return (
     <main className={s.root}>
