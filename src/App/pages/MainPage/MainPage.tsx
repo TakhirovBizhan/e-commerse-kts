@@ -33,9 +33,7 @@ export const MainPage = () => {
               <ProductsCount dataLength={data.length} loading={isLoading} />
               <Pagination pageCount={data.length}></Pagination>
             </>
-          ) : (
-            <div>no data</div>
-          )}
+          ) : null}
         </div>
       </div>
     </main>

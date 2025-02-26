@@ -71,9 +71,9 @@ export const Pagination: React.FC<PaginationProps> = ({ pageCount }) => {
             </button>
           </div>
         </>
-      ) : (
+      ) : !isLoading ? (
         <Text view={'p-20'}>Ops... No data!</Text>
-      )}
+      ) : null}
     </>
   );
 };
