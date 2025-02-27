@@ -34,7 +34,7 @@ const Header = () => {
             <Text view="p-18">Products</Text>
           </NavLink>
           <NavLink
-            to="/Categories"
+            to="/categories"
             className={({ isActive }) =>
               isActive ? `${styles.header__nav__link} ${styles.header__nav__link__active}` : styles.header__nav__link
             }
@@ -42,7 +42,7 @@ const Header = () => {
             <Text view="p-18"> Categories</Text>
           </NavLink>
           <NavLink
-            to="/About_us"
+            to="/about_us"
             className={({ isActive }) =>
               isActive ? `${styles.header__nav__link} ${styles.header__nav__link__active}` : styles.header__nav__link
             }

@@ -1,6 +1,6 @@
 import Text from '../../../components/Text';
 import s from './About_us.module.scss';
-export const About_us = () => {
+const About_us = () => {
   return (
     <div className={s.wrapper}>
       <Text view="title">E-commerse mock service</Text>
@@ -8,3 +8,5 @@ export const About_us = () => {
     </div>
   );
 };
+
+export default About_us;
