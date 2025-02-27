@@ -3,6 +3,7 @@ import MultiDropdown, { Option } from '../../../../../components/MultiDropdown';
 import s from './filters.module.scss';
 import { useDispatch } from 'react-redux';
 import { setMinPrice, setMaxPrice } from '../../../../../store/ProductUrlSlice';
+import { setOrder } from '../../../../../store/CustomFiltersSlice';
 
 export const Filters = () => {
   const [filter, setFilterState] = useState<Option[]>([]);
@@ -10,7 +11,11 @@ export const Filters = () => {
   return (
     <MultiDropdown
       className={s.multiDropdown}
-      options={[{ key: 'min=50_max=100', value: 'between 50$ and 100$' }]}
+      options={[
+        { key: 'min=50_max=100', value: 'between 50$ and 100$' },
+        { key: 'asc', value: 'price: from low to high' },
+        { key: 'desc', value: 'price: from high to low' },
+      ]}
       value={filter}
       onChange={(value: Option[]) => {
         setFilterState(value);
@@ -23,8 +28,18 @@ export const Filters = () => {
 
         let maxPriceSet = false;
         let minPriceSet = false;
+        let orderSet = false;
 
         value.forEach((el) => {
+          if (el.key === 'asc') {
+            dispatch(setOrder('asc'));
+            orderSet = true;
+          }
+
+          if (el.key === 'desc') {
+            dispatch(setOrder('desc'));
+            orderSet = true;
+          }
           if (el.key === 'min=50_max=100') {
             const [minPart, maxPart] = el.key.split('_');
             const minPrice = Number(minPart.split('=')[1]);
@@ -35,6 +50,10 @@ export const Filters = () => {
             minPriceSet = true;
           }
         });
+
+        if (!orderSet) {
+          dispatch(setOrder(null));
+        }
 
         if (!maxPriceSet) dispatch(setMaxPrice(null));
         if (!minPriceSet) dispatch(setMinPrice(null));

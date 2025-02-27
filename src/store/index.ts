@@ -1,10 +1,12 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { api } from "./api/api";
 import ProductUrlSlice from "./ProductUrlSlice";
+import CustomFilterSlice from "./CustomFiltersSlice";
 
 const reducers = combineReducers({
     [api.reducerPath]: api.reducer,
-    productUrl: ProductUrlSlice
+    productUrl: ProductUrlSlice,
+    customFilters: CustomFilterSlice
 })
 
 export const store = configureStore({

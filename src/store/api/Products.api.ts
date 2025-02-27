@@ -45,9 +45,6 @@ export const productsApi = api.injectEndpoints({
                 } else {
                     urlParams.delete('title');
                 }
-                console.log(urlParams.toString());
-                console.log(rangeFilter)
-
                 return `/products?${urlParams.toString()}`
             },
             providesTags: ['products']

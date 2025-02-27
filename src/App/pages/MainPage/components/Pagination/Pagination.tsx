@@ -7,17 +7,26 @@ import { decrementPage, incrementPage, setPage } from '../../../../../store/Prod
 import { RootState } from '../../../../../store/index';
 import { useGetProductsQuery } from '../../../../../store/api/Products.api';
 import Text from '../../../../../components/Text';
+import { setData } from '../../../../../store/CustomFiltersSlice';
+import { useEffect } from 'react';
 
-interface PaginationProps {
-  pageCount: number;
-}
+type PaginationProps = {
+  pages: number;
+};
 
-export const Pagination: React.FC<PaginationProps> = ({ pageCount }) => {
+export const Pagination: React.FC<PaginationProps> = ({ pages }) => {
   const { page, search, rangeFilter } = useSelector((state: RootState) => state.productUrl);
   const { data, isLoading, error } = useGetProductsQuery({ page, search, rangeFilter });
   const dispatch = useDispatch();
 
-  const totalPages = Math.ceil(pageCount / 10);
+  useEffect(() => {
+    if (data?.length && !isLoading) {
+      dispatch(setData(data));
+    }
+  }, [data, dispatch, isLoading]);
+
+  const filteredData = useSelector((state: RootState) => state.customFilters.filteredData);
+  const totalPages = Math.ceil(pages / 10);
 
   const handleNextPage = () => dispatch(incrementPage());
   const handlePreviousPage = () => dispatch(decrementPage());
@@ -44,9 +53,9 @@ export const Pagination: React.FC<PaginationProps> = ({ pageCount }) => {
 
   return (
     <>
-      {data && data.length !== 0 ? (
+      {filteredData && filteredData.length !== 0 ? (
         <>
-          <ProductList data={data} error={error} isLoading={isLoading} />
+          <ProductList data={filteredData} error={error} isLoading={isLoading} />
           <div className={s.pagination}>
             <button onClick={handlePreviousPage} disabled={page === 1}>
               <img src={leftArrow} alt="previous page" />

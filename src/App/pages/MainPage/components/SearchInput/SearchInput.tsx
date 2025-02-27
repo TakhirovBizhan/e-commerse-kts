@@ -12,7 +12,6 @@ export const SearchInput = () => {
   const dispatch = useDispatch();
 
   const handleSearch = () => {
-    console.log('searching for', inputValue);
     dispatch(setSearch(inputValue));
   };
 
