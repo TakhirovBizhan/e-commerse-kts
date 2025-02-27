@@ -7,8 +7,9 @@ export const productsApi = api.injectEndpoints({
         getProducts: builder.query<IData[], { page?: number, rangeFilter?: TFilters, search?: string } | void>({
             query: ({ page = 0, rangeFilter = { price_min: null, price_max: null }, search = '' } = {}) => {
                 const urlParams = new URLSearchParams();
-                urlParams.append("offset", page.toString())
+                urlParams.append("offset", ((page - 1) * 9).toString())
                 urlParams.append("limit", '9')
+                console.log('page:', page, 'offset:', urlParams.get("offset"), 'limit:', urlParams.get("limit"))
 
                 if (rangeFilter.price_min && rangeFilter.price_max) {
                     urlParams.set('price_max', rangeFilter.price_max.toString());

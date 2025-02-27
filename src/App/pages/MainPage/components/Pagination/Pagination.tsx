@@ -7,26 +7,17 @@ import { decrementPage, incrementPage, setPage } from '../../../../../store/Prod
 import { RootState } from '../../../../../store/index';
 import { useGetProductsQuery } from '../../../../../store/api/Products.api';
 import Text from '../../../../../components/Text';
-import { setData } from '../../../../../store/CustomFiltersSlice';
-import { useEffect } from 'react';
 
 type PaginationProps = {
   pages: number;
 };
 
 export const Pagination: React.FC<PaginationProps> = ({ pages }) => {
-  const { page, search, rangeFilter } = useSelector((state: RootState) => state.productUrl);
-  const { data, isLoading, error } = useGetProductsQuery({ page, search, rangeFilter });
+  const { page: currentPage, search, rangeFilter } = useSelector((state: RootState) => state.productUrl);
+  const { data, isLoading, error } = useGetProductsQuery({ page: currentPage, search, rangeFilter });
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (data?.length && !isLoading) {
-      dispatch(setData(data));
-    }
-  }, [data, dispatch, isLoading]);
-
-  const filteredData = useSelector((state: RootState) => state.customFilters.filteredData);
-  const totalPages = Math.ceil(pages / 10);
+  const totalPages = Math.ceil(pages / 9);
 
   const handleNextPage = () => dispatch(incrementPage());
   const handlePreviousPage = () => dispatch(decrementPage());
@@ -35,47 +26,46 @@ export const Pagination: React.FC<PaginationProps> = ({ pages }) => {
   };
 
   const renderPageButtons = () => {
-    let buttons = [];
+    let buttons: (number | string)[] = [];
     if (totalPages <= 6) {
       buttons = Array.from({ length: totalPages }, (_, i) => i + 1);
     } else {
-      if (page <= 3) {
+      if (currentPage <= 3) {
         buttons = [1, 2, 3, '...', totalPages];
-      } else if (page > 3 && page < totalPages - 2) {
-        buttons = [1, '...', page - 1, page, page + 1, '...', totalPages];
+      } else if (currentPage > 3 && currentPage < totalPages - 2) {
+        buttons = [1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages];
       } else {
         buttons = [1, '...', totalPages - 2, totalPages - 1, totalPages];
       }
     }
-
     return buttons;
   };
 
   return (
     <>
-      {filteredData && filteredData.length !== 0 ? (
+      {data && data.length !== 0 ? (
         <>
-          <ProductList data={filteredData} error={error} isLoading={isLoading} />
+          <ProductList data={data} error={error} isLoading={isLoading} />
           <div className={s.pagination}>
-            <button onClick={handlePreviousPage} disabled={page === 1}>
+            <button onClick={handlePreviousPage} disabled={currentPage === 1}>
               <img src={leftArrow} alt="previous page" />
             </button>
-            {renderPageButtons().map((page, index) =>
-              page === '...' ? (
+            {renderPageButtons().map((btn, index) =>
+              btn === '...' ? (
                 <span key={index} className={s.ellipsis}>
-                  {page}
+                  {btn}
                 </span>
               ) : (
                 <button
                   key={index}
-                  className={page === page ? s.active : ''}
-                  onClick={() => handlePageClick(page as number)}
+                  className={btn === currentPage ? s.active : ''}
+                  onClick={() => handlePageClick(btn as number)}
                 >
-                  {page}
+                  {btn}
                 </button>
               ),
             )}
-            <button onClick={handleNextPage} disabled={page === totalPages}>
+            <button onClick={handleNextPage} disabled={currentPage === totalPages}>
               <img src={rightArrow} alt="next page" />
             </button>
           </div>
