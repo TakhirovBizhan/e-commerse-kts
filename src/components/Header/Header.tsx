@@ -7,7 +7,7 @@ import burgerSvg from '../../../public/burger.svg';
 import styles from './Header.module.scss';
 import { ThemeToggle } from '../ThemeButton/ThemeButton';
 
-export const Header = () => {
+const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.header__wrapper}>
@@ -52,14 +52,20 @@ export const Header = () => {
         </nav>
         <div className={styles.header__icons_block}>
           <ThemeToggle />
-          <button className={styles.icon}>
-            <img className={styles.img} src={bagSvg} alt="корзина" />
-          </button>
-          <button className={styles.icon}>
-            <img className={styles.img} src={userSvg} alt="Профиль" />
-          </button>
+          <Link to="/cart">
+            <button className={styles.icon}>
+              <img className={styles.img} src={bagSvg} alt="корзина" />
+            </button>
+          </Link>
+          <Link to="/profile">
+            <button className={styles.icon}>
+              <img className={styles.img} src={userSvg} alt="Профиль" />
+            </button>
+          </Link>
         </div>
       </div>
     </header>
   );
 };
+
+export default Header;

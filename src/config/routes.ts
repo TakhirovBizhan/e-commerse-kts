@@ -4,4 +4,7 @@ export const ROUTES = {
   categories: '/categories',
   about_us: '/about_us',
   category: '/category:id',
+  cart: '/cart',
+  auth: '/auth',
+  profile: '/profile'
 };
