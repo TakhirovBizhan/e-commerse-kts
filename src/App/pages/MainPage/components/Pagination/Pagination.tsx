@@ -10,11 +10,12 @@ import Text from '../../../../../components/Text';
 
 type PaginationProps = {
   pages: number;
+  category?: number;
 };
 
-export const Pagination: React.FC<PaginationProps> = ({ pages }) => {
+export const Pagination: React.FC<PaginationProps> = ({ pages, category }) => {
   const { page: currentPage, search, rangeFilter } = useSelector((state: RootState) => state.productUrl);
-  const { data, isLoading, error } = useGetProductsQuery({ page: currentPage, search, rangeFilter });
+  const { data, isLoading, error } = useGetProductsQuery({ page: currentPage, search, rangeFilter, category });
   const dispatch = useDispatch();
 
   const totalPages = Math.ceil(pages / 9);

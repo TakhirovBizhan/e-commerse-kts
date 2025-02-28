@@ -3,7 +3,7 @@ export const ROUTES = {
   product: '/main/product/:id',
   categories: '/categories',
   about_us: '/about_us',
-  category: '/category:id',
+  category: '/category/:id',
   cart: '/cart',
   auth: '/auth',
   profile: '/profile'

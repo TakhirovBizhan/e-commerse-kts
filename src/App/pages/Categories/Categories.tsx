@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Button from '../../../components/Button';
 import Card from '../../../components/Card';
 import Loader from '../../../components/Loader';
@@ -16,17 +17,18 @@ export const Categories = () => {
         ) : data ? (
           <div className={s.category_list}>
             {data.map((category) => (
-              <Card
-                className={s.category_card}
-                key={category.id}
-                title={category.name}
-                image={category.image}
-                actionSlot={
-                  <Button className={s.action_btn}>
-                    <Text view="button">See</Text>
-                  </Button>
-                }
-              />
+              <Link key={category.id} to={`/category/${category.id}`}>
+                <Card
+                  className={s.category_card}
+                  title={category.name}
+                  image={category.image}
+                  actionSlot={
+                    <Button className={s.action_btn}>
+                      <Text view="button">See</Text>
+                    </Button>
+                  }
+                />
+              </Link>
             ))}
           </div>
         ) : error ? (
