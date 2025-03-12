@@ -31,9 +31,9 @@ export const Pagination: React.FC<PaginationProps> = ({ pages, category }) => {
     if (totalPages <= 6) {
       buttons = Array.from({ length: totalPages }, (_, i) => i + 1);
     } else {
-      if (currentPage <= 3) {
+      if (currentPage < 3) {
         buttons = [1, 2, 3, '...', totalPages];
-      } else if (currentPage > 3 && currentPage < totalPages - 2) {
+      } else if (currentPage >= 3 && currentPage < totalPages - 2) {
         buttons = [1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages];
       } else {
         buttons = [1, '...', totalPages - 2, totalPages - 1, totalPages];
