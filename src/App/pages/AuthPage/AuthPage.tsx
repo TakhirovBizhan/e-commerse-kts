@@ -3,6 +3,9 @@ import s from './AuthPage.module.scss';
 import Text from '../../../components/Text';
 import { useState } from 'react';
 import Button from '../../../components/Button';
+import eyeIcon from '../../../../public/eyeIcon.svg';
+import eyeIconOff from '../../../../public/eyeIconOff.svg';
+import { registerForm } from '../../../config/DataInterfaces';
 
 function AuthPage() {
   const {
@@ -11,7 +14,7 @@ function AuthPage() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data: unknown) => {
+  const onSubmit = (data: registerForm) => {
     console.log(data);
   };
 
@@ -35,11 +38,17 @@ function AuthPage() {
           {authIs == 'register' ? 'Registration' : 'Login'}
         </Text>
       </legend>
-      <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
+      <form noValidate className={s.form} onSubmit={handleSubmit(onSubmit)}>
         {authIs === 'register' ? (
-          <label htmlFor="username">
+          <label htmlFor="name">
             Full name
-            <input {...register('username', { required: 'Name required' })} />
+            <input
+              id="name"
+              required
+              {...register('name', {
+                required: 'Name required',
+              })}
+            />
           </label>
         ) : (
           ''
@@ -47,20 +56,31 @@ function AuthPage() {
         {typeof errors.username?.message === 'string' && <p>{errors.username.message}</p>}
         <label htmlFor="email">
           Email
-          <input {...register('email', { required: 'Email required' })} />
+          <input id="email" required type="email" {...register('email', { required: 'Email required' })} />
         </label>
         {typeof errors.email?.message === 'string' && <p>{errors.email.message}</p>}
-        <label htmlFor="password">
+        <label className={s.password_label} htmlFor="password">
           Password
           <input
+            id="password"
+            required
+            className={s.password_input}
+            minLength={6}
             type={showPassword ? 'text' : 'password'}
-            {...register('password', { required: 'Password required' })}
+            {...register('password', {
+              required: 'Password required',
+              minLength: { value: 6, message: '6 symbols mininmum' },
+            })}
+          />
+          <img
+            className={s.eye_icon}
+            onClick={() => setShowPassword((prev) => !prev)}
+            src={showPassword ? eyeIconOff : eyeIcon}
+            alt="eye-icon"
           />
         </label>
         {typeof errors.password?.message === 'string' && <p>{errors.password.message}</p>}
-        <button type="button" onClick={() => setShowPassword((prev) => !prev)}>
-          {showPassword ? 'Скрыть' : 'Показать'}
-        </button>
+
         <Button className={s.submit_btn} type="submit">
           {authIs === 'register' ? 'register' : 'login'}
         </Button>

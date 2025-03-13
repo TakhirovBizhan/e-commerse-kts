@@ -8,7 +8,7 @@
     padding: $space_xl;
     margin-left: auto;
     margin-right: auto;
-    width: 500px;
+    max-width: 500px;
     border-color: $brand-color;
     border-radius: 15px;
 }
@@ -28,6 +28,8 @@
         display: flex;
         justify-content: space-between;
         font-size: 19px;
+        flex-direction: column;
+        gap: 10px;
     }
 
     input {
@@ -46,11 +48,12 @@
 
     input:valid {
         border-color: 1px solid green;
+        background-color: rgb(205, 243, 200);
     }
 
     input:invalid {
         border-color: 1px solid red;
-        background-color: red;
+        background-color: rgb(247, 195, 195);
     }
 }
 
@@ -68,4 +71,17 @@
     border: none;
     margin-left: auto;
     margin-right: auto;
+}
+
+.eye_icon {
+    width: 23px;
+    position: absolute;
+    right: 100px;
+    bottom: 1px;
+    border-left: 1px solid grey;
+    padding-left: 1px;
+}
+
+.password_label {
+    position: relative;
 }
