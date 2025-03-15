@@ -4,7 +4,7 @@ const API_URL = 'https://api.escuelajs.co/api/v1';
 
 export const api = createApi({
     reducerPath: 'api',
-    tagTypes: ['products', 'categories'],
+    tagTypes: ['products', 'categories', 'auth'],
     baseQuery: fetchBaseQuery({
         baseUrl: API_URL,
     }),

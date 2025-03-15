@@ -5,89 +5,107 @@ import { useState } from 'react';
 import Button from '../../../components/Button';
 import eyeIcon from '../../../../public/eyeIcon.svg';
 import eyeIconOff from '../../../../public/eyeIconOff.svg';
-import { registerForm } from '../../../config/DataInterfaces';
+import { userLogType, userRegType } from '../../../config/DataInterfaces';
+import { useRegisterMutation, useLoginMutation } from '../../../store/api/Auth.api';
+
+type AuthType = 'register' | 'login';
+
+type FormData = userRegType | userLogType;
 
 function AuthPage() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<FormData>();
 
-  const onSubmit = (data: registerForm) => {
-    console.log(data);
+  const [authIs, setAuthIs] = useState<AuthType>('register');
+  const [showPassword, setShowPassword] = useState(false);
+
+  const [registerUser, { isLoading: isRegisterLoading, error: registerError }] = useRegisterMutation();
+  const [loginUser, { isLoading: isLoginLoading, error: loginError }] = useLoginMutation();
+
+  const onSubmit = async (data: FormData) => {
+    try {
+      if (authIs === 'register') {
+        const regData = data as userRegType;
+        const response = await registerUser({
+          ...regData,
+          avatar: 'https://docs.gravatar.com/wp-content/uploads/2025/02/avatar-mysteryperson-20250210-256.png?w=256',
+        }).unwrap();
+        console.log('Registration Success:', response);
+      } else {
+        // Для логина ожидаются только email и password
+        const loginData = data as userLogType;
+        const response = await loginUser(loginData).unwrap();
+        console.log('Login Success:', response);
+      }
+    } catch (err) {
+      console.error('API error:', err);
+    }
   };
 
-  type authType = 'register' | 'login';
-
-  const [showPassword, setShowPassword] = useState(false);
-  const [authIs, ToggleAuthIs] = useState<authType>('register');
-
-  const toggle = () => {
-    if (authIs == 'register') {
-      ToggleAuthIs('login');
-    } else {
-      ToggleAuthIs('register');
-    }
+  const toggleAuth = () => {
+    setAuthIs((prev) => (prev === 'register' ? 'login' : 'register'));
   };
 
   return (
     <fieldset className={s.fieldset}>
       <legend>
         <Text view="title" color="primary">
-          {authIs == 'register' ? 'Registration' : 'Login'}
+          {authIs === 'register' ? 'Registration' : 'Login'}
         </Text>
       </legend>
       <form noValidate className={s.form} onSubmit={handleSubmit(onSubmit)}>
-        {authIs === 'register' ? (
+        {authIs === 'register' && (
           <label htmlFor="name">
             Full name
-            <input
-              id="name"
-              required
-              {...register('name', {
-                required: 'Name required',
-              })}
-            />
+            <input id="name" required {...register('name', { required: 'Name required' })} />
           </label>
-        ) : (
-          ''
         )}
-        {typeof errors.username?.message === 'string' && <p>{errors.username.message}</p>}
+
         <label htmlFor="email">
           Email
           <input id="email" required type="email" {...register('email', { required: 'Email required' })} />
         </label>
-        {typeof errors.email?.message === 'string' && <p>{errors.email.message}</p>}
+        {errors.email && <p>{errors.email.message}</p>}
+
         <label className={s.password_label} htmlFor="password">
           Password
           <input
             id="password"
             required
-            className={s.password_input}
             minLength={6}
+            className={s.password_input}
             type={showPassword ? 'text' : 'password'}
             {...register('password', {
               required: 'Password required',
-              minLength: { value: 6, message: '6 symbols mininmum' },
+              minLength: { value: 6, message: '6 symbols minimum' },
             })}
           />
           <img
             className={s.eye_icon}
             onClick={() => setShowPassword((prev) => !prev)}
             src={showPassword ? eyeIconOff : eyeIcon}
-            alt="eye-icon"
+            alt="Toggle password visibility"
           />
         </label>
-        {typeof errors.password?.message === 'string' && <p>{errors.password.message}</p>}
+        {errors.password && <p>{errors.password.message}</p>}
 
-        <Button className={s.submit_btn} type="submit">
-          {authIs === 'register' ? 'register' : 'login'}
+        <Button className={s.submit_btn} type="submit" disabled={isRegisterLoading || isLoginLoading}>
+          {authIs === 'register' ? 'Register' : 'Login'}
         </Button>
+
+        {authIs === 'register' && registerError && (
+          <p className={s.error_message}>Registration Error: {JSON.stringify(registerError)}</p>
+        )}
+        {authIs === 'login' && loginError && (
+          <p className={s.error_message}>Login Error: {JSON.stringify(loginError)}</p>
+        )}
       </form>
 
-      <button onClick={toggle} className={s.assign_link}>
-        Have an account? Login here
+      <button onClick={toggleAuth} className={s.assign_link}>
+        {authIs === 'register' ? 'Have an account? Login here' : "Don't have an account? Register"}
       </button>
     </fieldset>
   );
