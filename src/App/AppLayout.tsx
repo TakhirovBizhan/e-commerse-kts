@@ -1,11 +1,16 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, Navigate } from 'react-router-dom';
+import { useAuth } from '../hooks/useAuth/AuthContext';
 import Header from '../components/Header';
 
-export const AppLayout = () => {
+const ProtectedLayout = () => {
+  const { isAuthenticated } = useAuth();
+
   return (
     <>
       <Header />
-      <Outlet />
+      {isAuthenticated ? <Outlet /> : <Navigate to="/login" />}
     </>
   );
 };
+
+export default ProtectedLayout;
