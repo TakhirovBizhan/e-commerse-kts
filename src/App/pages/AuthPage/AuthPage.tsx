@@ -7,6 +7,8 @@ import eyeIcon from '../../../../public/eyeIcon.svg';
 import eyeIconOff from '../../../../public/eyeIconOff.svg';
 import { userLogType, userRegType } from '../../../config/DataInterfaces';
 import { useRegisterMutation, useLoginMutation } from '../../../store/api/Auth.api';
+import { useAuth } from '../../../hooks/useAuth/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 type AuthType = 'register' | 'login';
 
@@ -19,6 +21,8 @@ function AuthPage() {
     formState: { errors },
   } = useForm<FormData>();
 
+  const { login } = useAuth();
+  const navigate = useNavigate();
   const [authIs, setAuthIs] = useState<AuthType>('register');
   const [showPassword, setShowPassword] = useState(false);
 
@@ -34,11 +38,17 @@ function AuthPage() {
           avatar: 'https://docs.gravatar.com/wp-content/uploads/2025/02/avatar-mysteryperson-20250210-256.png?w=256',
         }).unwrap();
         console.log('Registration Success:', response);
+        const logResponce = await loginUser({ email: response.email, password: response.password }).unwrap();
+        console.log('login via reg is working!');
+        login(logResponce.access_token);
+        navigate('/main');
       } else {
         // Для логина ожидаются только email и password
         const loginData = data as userLogType;
         const response = await loginUser(loginData).unwrap();
         console.log('Login Success:', response);
+        login(response.access_token);
+        navigate('/main');
       }
     } catch (err) {
       console.error('API error:', err);
