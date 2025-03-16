@@ -18,7 +18,17 @@ export const AuthApi = api.injectEndpoints({
                 body: logData,
             }),
         }),
+        getProfile: builder.query<userLogResponce, userLogType>({
+            query: (logData) => ({
+                url: "/auth/profile",
+                method: "GET",
+                body: logData,
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+                },
+            }),
+        }),
     })
 })
 
-export const { useRegisterMutation, useLoginMutation } = AuthApi;
+export const { useRegisterMutation, useLoginMutation, useGetProfileQuery } = AuthApi;

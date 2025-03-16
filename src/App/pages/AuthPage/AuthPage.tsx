@@ -37,16 +37,12 @@ function AuthPage() {
           ...regData,
           avatar: 'https://docs.gravatar.com/wp-content/uploads/2025/02/avatar-mysteryperson-20250210-256.png?w=256',
         }).unwrap();
-        console.log('Registration Success:', response);
         const logResponce = await loginUser({ email: response.email, password: response.password }).unwrap();
-        console.log('login via reg is working!');
         login(logResponce.access_token);
         navigate('/main');
       } else {
-        // Для логина ожидаются только email и password
         const loginData = data as userLogType;
         const response = await loginUser(loginData).unwrap();
-        console.log('Login Success:', response);
         login(response.access_token);
         navigate('/main');
       }
