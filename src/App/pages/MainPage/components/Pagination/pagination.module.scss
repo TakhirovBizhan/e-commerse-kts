@@ -12,6 +12,7 @@
     padding: 5px 10px;
     border: none;
     cursor: pointer;
+    color: var(--primary-color);
 
     &.active {
       background-color: $brand-color;
@@ -26,4 +27,8 @@
 }
 .loader {
   @include loader;
+}
+
+.ellipsis {
+  color:  var(--primary-color);
 }

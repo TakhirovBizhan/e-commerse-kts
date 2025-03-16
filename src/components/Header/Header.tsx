@@ -4,16 +4,19 @@ import bagSvg from '../../../public/bag.svg';
 import userSvg from '../../../public/user.svg';
 import logoSvg from '../../../public/favicon.svg';
 import burgerSvg from '../../../public/burger.svg';
+import lightBurger from '../../../public/lightBurger.svg';
 import styles from './Header.module.scss';
 import { ThemeToggle } from '../ThemeButton/ThemeButton';
+import { useTheme } from '../../hooks/useThemes/themeContext';
 
 const Header = () => {
+  const { theme } = useTheme();
   return (
     <header className={styles.header}>
       <div className={styles.header__wrapper}>
         <div className={styles.logo_burger_block}>
           <button className={styles.burger_btn}>
-            <img src={burgerSvg} alt="бургер-меню" />
+            <img src={theme !== 'dark' ? burgerSvg : lightBurger} alt="бургер-меню" />
           </button>
           <Link to="/main">
             <div className={styles.logo}>

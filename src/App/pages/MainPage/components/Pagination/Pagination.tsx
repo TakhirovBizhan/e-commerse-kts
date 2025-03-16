@@ -1,5 +1,7 @@
 import leftArrow from '../../../../../../public/leftArrow.svg';
 import rightArrow from '../../../../../../public/rightArrow.svg';
+import lightLeftArrow from '../../../../../../public/lightLeftArrow.svg';
+import lightRightArrow from '../../../../../../public/lightRightArrow.svg';
 import s from './pagination.module.scss';
 import ProductList from '../ProductList/ProductList';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,6 +9,7 @@ import { decrementPage, incrementPage, setPage } from '../../../../../store/Prod
 import { RootState } from '../../../../../store/index';
 import { useGetProductsQuery } from '../../../../../store/api/Products.api';
 import Text from '../../../../../components/Text';
+import { useTheme } from '../../../../../hooks/useThemes/themeContext';
 
 type PaginationProps = {
   pages: number;
@@ -18,6 +21,7 @@ export const Pagination: React.FC<PaginationProps> = ({ pages, category }) => {
   const { data, isLoading, error } = useGetProductsQuery({ page: currentPage, search, rangeFilter, category });
   const dispatch = useDispatch();
 
+  const { theme } = useTheme();
   const totalPages = Math.ceil(pages / 9);
 
   const handleNextPage = () => dispatch(incrementPage());
@@ -49,7 +53,7 @@ export const Pagination: React.FC<PaginationProps> = ({ pages, category }) => {
           <ProductList data={data} error={error} isLoading={isLoading} />
           <div className={s.pagination}>
             <button onClick={handlePreviousPage} disabled={currentPage === 1}>
-              <img src={leftArrow} alt="previous page" />
+              <img src={theme !== 'dark' ? leftArrow : lightLeftArrow} alt="previous page" />
             </button>
             {renderPageButtons().map((btn, index) =>
               btn === '...' ? (
@@ -67,7 +71,7 @@ export const Pagination: React.FC<PaginationProps> = ({ pages, category }) => {
               ),
             )}
             <button onClick={handleNextPage} disabled={currentPage === totalPages}>
-              <img src={rightArrow} alt="next page" />
+              <img src={theme !== 'dark' ? rightArrow : lightRightArrow} alt="next page" />
             </button>
           </div>
         </>
