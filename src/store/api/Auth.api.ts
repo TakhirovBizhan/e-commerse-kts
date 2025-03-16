@@ -18,7 +18,7 @@ export const AuthApi = api.injectEndpoints({
                 body: logData,
             }),
         }),
-        getProfile: builder.query<userLogResponce, userLogType>({
+        getProfile: builder.query<userRegResponce, void>({
             query: (logData) => ({
                 url: "/auth/profile",
                 method: "GET",

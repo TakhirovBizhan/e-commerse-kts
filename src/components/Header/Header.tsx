@@ -57,7 +57,7 @@ const Header = () => {
               <img className={styles.img} src={bagSvg} alt="корзина" />
             </button>
           </Link>
-          <Link to="/auth">
+          <Link to="/profile">
             <button className={styles.icon}>
               <img className={styles.img} src={userSvg} alt="Профиль" />
             </button>
