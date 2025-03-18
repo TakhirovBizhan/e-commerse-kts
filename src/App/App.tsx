@@ -23,6 +23,7 @@ function App() {
               <Route path={ROUTES.profile} element={<Profile />} />
               <Route path={ROUTES.cart} element={<Cart />} />
               <Route path="*" element={<Navigate to={ROUTES.root} replace />} />
+              <Route path="/" element={<Navigate to={ROUTES.root} replace />} />
             </Route>
           </Routes>
         </BrowserRouter>

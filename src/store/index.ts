@@ -1,12 +1,12 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { api } from "./api/api";
 import ProductUrlSlice from "./ProductUrlSlice";
-import CustomFilterSlice from "./CustomFiltersSlice";
+import cartSlice, { saveCartState } from "./CartSlice";
 
 const reducers = combineReducers({
     [api.reducerPath]: api.reducer,
     productUrl: ProductUrlSlice,
-    customFilters: CustomFilterSlice
+    cart: cartSlice
 })
 
 export const store = configureStore({
@@ -15,6 +15,10 @@ export const store = configureStore({
         getDefaultMiddleware().concat(api.middleware),
 })
 
+store.subscribe(() => {
+    const state = store.getState();
+    saveCartState(state.cart);
+});
 
 
 export type RootState = ReturnType<typeof store.getState>

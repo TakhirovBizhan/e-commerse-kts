@@ -8,7 +8,6 @@ import s from './Profile.module.scss';
 const Profile = () => {
   const { data: profileData, isLoading: loading } = useGetProfileQuery();
   const { logout } = useAuth();
-  console.log(profileData);
 
   return (
     <div className={s.wrapper}>
